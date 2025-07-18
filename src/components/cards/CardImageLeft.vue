@@ -1,0 +1,63 @@
+<script setup>
+
+// Definir propiedades (props)
+const props = defineProps({
+    title: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    url: {
+        type: String,
+        required: true,
+    }
+});
+
+</script>
+
+<template>
+    <div class="container my-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="text-center text-md-start">
+                        <h1 class="display-4 mb-4 text-center">{{ props.title }}</h1>
+                        <p class="lead">
+                            {{ props.description }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <img :src="url" alt="Logo" class="img-fluid about-image" />
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+h1 {
+    color: var(--text-color-2);
+    font-family: var(--text-font-2);
+}
+
+p {
+    color: var(--text-color-3);
+    font-family: var(--text-font-2);
+    text-align: justify;
+
+}
+
+.about-image {
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.about-image:hover {
+  transform: scale(1.02);
+}
+</style>

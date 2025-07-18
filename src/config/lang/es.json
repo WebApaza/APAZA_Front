@@ -1,0 +1,366 @@
+{
+    "title": "APAZA",
+    "loading": "Cargando...",
+    "titleAboutUs": "Sobre nosotros",
+    "services": "Servicios",
+    "events": "Eventos",
+    "welcome": "Bienvenido",
+    "backText": "Volver",
+    "correctText": "Correcto",
+    "developers":{
+        "title": "Desarrolladores",
+        "Diego":{
+            "name": "Diego Ríos Saborío",
+            "role": "Desarrollador full stack",
+            "description": "Informático Empresarial graduado de la UCR. Especializado en desarrollo backend y móvil, con capacidad full-stack para soluciones integrales."
+        },
+        "elias":{
+            "name": "Elias Mena",
+            "role": "Desarrollador Front-end",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!"
+        },
+        "Jona":{
+            "name": "Jonathan",
+            "role": "Desarrollador Front-end",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!"
+        },
+        "Yeikel":{
+            "name": "Yeikel",
+            "role": "Desarrollador Front-end",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!"
+        },
+        "Jafeth":{
+            "name": "jafeth",
+            "role": "Desarrollador Front-end",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!"
+        }
+
+
+    },
+    "homepage": {
+        "titles": {
+            "whatIsTea": "¿Que es el TEA?",
+            "characteristicsTea": "Características del TEA",
+            "treatmentsTitle": "Tratamientos",
+            "informationTeaApaza": "Sobre nosotros",
+            "recentDiagnosis": "Recién Diagnosticado",
+            "countTitle1": "Miembros",
+            "countTitle2": "Fundación",
+            "countTitle3": "Junta directiva",
+            "ourServices": "Nuestros Servicios",
+            "ourEvents": "Nuestros Eventos",
+            "events": "Eventos",
+            "titleButton": "Ver más"
+        },
+        "body": {
+            "descriptionTea": "El TEA es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el mundo y con las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y relacionarse con los demás, y pueden tener intereses y comportamientos repetitivos.",
+            "descriptionCharacteristicsTea": "El Trastorno del Espectro Autista (TEA), presenta síntomas que pueden variar en cada niño. Algunos signos comunes incluyen dificultad para comunicarse o mantener contacto visual, comportamientos repetitivos como mecerse o aletear, preferencia por la rutina y resistencia al cambio, y problemas para entender emociones o interactuar socialmente.",
+            "descriptionHelpDiagnostic": "Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo",
+            "infoCharacteristicsTea": "Conoce los características y señales comunes del autismo para una identificación temprana y precisa.",
+            "infoTreatments": "Explora diferentes tratamientos y terapias que pueden ayudar en el desarrollo y bienestar de personas con autismo.",
+            "infoDiagnosis": "Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo",
+            "infoEvents": "Explora nuestros eventos y entérate de todas nuestras actividades para no perderte ninguna.",
+            "infoAboutUs": "Conoce más sobre nosotros y nuestra misión de apoyar a personas con TEA y sus familias.",
+            "descriptionAboutUs": "Estamos emocionados de compartir nuestro recorrido y todo lo que nos impulsa a seguir adelante.",
+            "descriptionCount1": "Conoce a los miembros que forman parte de nuestra comunidad.",
+            "descriptionCount2": "Descubre nuestra historia y cómo hemos crecido a lo largo de los años.",
+            "descriptionCount3": "Conoce a los miembros de nuestra junta directiva y su compromiso con nuestra misión.",
+            "aboutDescription1": "¡Hola! Somos APAZA, una asociación formada por familias unidas por un propósito común: apoyar a las personas con TEA, comprometida con ",
+            "aboutDescription2": "brindar orientación y apoyo emocional,",
+            "aboutDescription3": "con el objetivo de mejorar la calidad de vida de las personas con TEA y sus familias a través de consejos, experiencias compartidas y un espacio de ayuda mutua.",
+            "aboutDescription4": "Nuestra asociación nace del esfuerzo y la solidaridad de familias que decidieron unirse para marcar la diferencia y crear un entorno de apoyo y comprensión.",
+            "aboutDescription5": "Con una visión enfocada en construir comunidades más inclusivas y un compromiso inquebrantable con la",
+            "aboutDescription6": "mejora de la calidad de vida, ",
+            "aboutDescription7": "seguimos trabajando juntos para ofrecer recursos, consejos prácticos y un espacio donde las familias puedan sentirse acompañadas.",
+            "btnAboutUs": "¡Conócenos!"
+        }
+    },
+    "loginpage": {
+        "titles": {
+            "createAccountText": "Crear cuenta",
+            "nameText": "Nombre",
+            "emailText": "Correo electrónico",
+            "passwordText": "Contraseña",
+            "loginText": "Iniciar sesión",
+            "registerText": "Registrar",
+            "logoutText": "Cerrar sesión",
+            "loggedText": "Sesión iniciada",
+            "areAdminText": "Eres un administrador",
+            "createAnotherAdminText": "Crear otro administrador",
+            "welcomeNeedLog": "Bienvenido, inicia sesión"
+        },
+        "messages": {
+            "cantLoginMsg": "Error, No se pudo iniciar sesión",
+            "registerSuccessMsg": "Se registró correctamente",
+            "cantRegisterMsg": "Error, No se pudo registrar",
+            "loginMessageMsg": "Inicia sesión para que puedas crear otro usuario",
+            "goToAdminPage": "Administrar"
+        }
+    },
+    "navbar": {
+        "titles": {
+            "start": "Inicio",
+            "team": "Junta",
+            "sponsors": "Colaboradores",
+            "events": "Eventos",
+            "admin": "Administrar",
+            "darkMode": "Modo oscuro"
+        },
+        "languages": {
+            "language": "Idioma",
+            "spanish": "Español",
+            "english": "Inglés"
+        }
+    },
+    "footer": {
+        "titles": {
+            "social": "Redes sociales",
+            "aboutUs": "Sobre nosotros",
+            "team": "Junta directiva",
+            "developers": "Desarrolladores",
+            "session": "Sesión",
+            "help": "Ayuda",
+            "info": "Información",
+            "contact": "Contacto",
+            "email": "Correo electrónico",
+            "whatsapp": "Whatsapp"
+        },
+        "body": {
+            "phrase": "Juntos construyendo un futuro más inclusivo para las personas con TEA.",
+            "infoText": "Este proyecto apoya a la organización APAZA con la colaboración del TCU-663 y TCU-751 Guápiles. Estudiantes participantes: - Jeikel Medrano Montesino - Jonnathan García Loria - Elías Mena Fonseca - Diego Ríos Saborío"
+        }
+    },
+    "galleryadminpage": {
+        "titles": {
+            "gallery": "Galería",
+            "noImages": "No hay imágenes disponibles",
+            "addImage": "Agregar imagen",
+            "addAlbum": "Crear Album",
+            "editAlbum": "Editar Album",
+            "delete": "Eliminar",
+            "save": "Guardar",
+            "edit": "Editar",
+            "other": "Otro",
+            "description": "Descripción",
+            "year": "Año",
+            "selectFile": "Selecciona archivos"
+        },
+        "descriptions": {
+            "createAlbumImages": "Crea un album con imágenes",
+            "editDeleteAlbum": "Edita o Elimina imágenes de un album",
+            "addImageAlbum": "Agrega imágenes a un album existente",
+            "dropImage": "Arrastra y suelta imágenes aquí o"
+        },
+        "bottoms": {
+            "cancel": "Cancelar",
+            "delete": "Eliminar",
+            "save": "Guardar",
+            "update": "Actualizar",
+            "addImages": "Agregar imagenes",
+            "close": "Cerrar"
+        },
+        "pagination": {
+            "prev": "Anterior",
+            "next": "Siguiente",
+            "page": "Página",
+            "of": "de",
+            "elements": "elementos"
+        },
+        "modal": {
+            "title": "Eliminar Álbum",
+            "message": "¿Estás seguro de que deseas eliminar este álbum?",
+            "cancel": "Cancelar",
+            "delete": "Eliminar"
+        }
+    },
+    "gallerydetailpage":
+    { "bottoms": {
+        "delete": "Eliminar",
+        "download": "Descargar",
+        "save": "Guardar cambios",
+        "goGallery": "Ir a la galería"
+    },
+    "titles":{
+        "main": "Actualizar Información",
+        "description": "Descripción",
+        "year": "Año"
+    },
+    "modal": {
+        "title": "Eliminar Imagen",
+        "message": "¿Estás seguro de que deseas eliminar esta imagen?",
+        "cancel": "Cancelar",
+        "delete": "Eliminar"
+    }
+    }
+    ,
+    "eventhomepage": {
+        "titles": {
+            "noEvents": "No hay eventos disponibles",
+            "addEvent": "Agregar evento"
+        }
+    },
+    "eventaddpage": {
+        "titles": {
+            "main": "Crear Nuevo Evento",
+            "title": "Título del Evento",
+            "description": "Descripción",
+            "date": "Fecha del Evento",
+            "type": "Tipo de Evento",
+            "image": "Imagen del Evento"
+        },
+        "buttons": {
+            "back": "Atrás",
+            "create": "Crear Evento"
+        },
+        "validation": {
+            "title": "Por favor, ingresa un título para el evento",
+            "description": "Por favor, proporciona una descripción del evento",
+            "date": "Por favor, selecciona una fecha para el evento",
+            "type": "Por favor, selecciona un tipo de evento"
+        },
+        "options": {
+            "default": "Selecciona un tipo",
+            "family": "Familiar",
+            "cultural": "Evento Cultural"
+        }
+    },
+    "eventpage": {
+        "titles": {
+            "main": "Información del Evento",
+            "date": "Fecha",
+            "description": "Descripción"
+        },
+        "actions": {
+            "main": "Acciones",
+            "list": "Ir a la lista de eventos",
+            "listAdmin": "Ir a la lista de eventos admin",
+            "delete": "Eliminar evento",
+            "edit": "Editar evento"
+        },
+        "modal": {
+            "title": "Eliminar evento",
+            "message": "¿Estás seguro de que deseas eliminar este evento?",
+            "cancel": "Cancelar",
+            "delete": "Eliminar"
+        },
+        "editModal": {
+            "title": "Editar evento",
+            "titleEvent": "Titulo",
+            "description": "Descripción",
+            "image": "Foto del evento",
+            "cancel": "Cancelar",
+            "save": "Guardar",
+            "saving": "Guardando..."
+        }
+    },
+    "boardhomepage": {
+        "titles": {
+            "boards": "Miembros de la junta",
+            "addmember": "Agregar miembro",
+            "nomembers": "No hay miembros disponibles"
+        }
+    },
+    "memberpage": {
+        "titles": {
+            "main": "Detalles del miembro"
+        },
+        "actions": {
+            "main": "Acciones",
+            "listAdmin": "Ir a la lista de miembros admin",
+            "list": "Ir a la lista de miembros",
+            "delete": "Eliminar miembro",
+            "edit": "Editar miembro"
+        },
+        "modal": {
+            "title": "Eliminar miembro",
+            "message": "¿Estás seguro de que deseas eliminar este miembro?",
+            "cancel": "Cancelar",
+            "delete": "Eliminar"
+        },
+        "editModal": {
+            "title": "Editar miembro",
+            "name": "Nombre",
+            "role": "Puesto",
+            "photo": "Foto de perfil",
+            "cancel": "Cancelar",
+            "save": "Guardar",
+            "saving": "Guardando..."
+        }
+    },
+    "memberaddpage": {
+        "titles": {
+            "main": "Agregar Nuevo Miembro",
+            "name": "Nombre del miembro",
+            "role": "Puesto",
+            "photo": "Foto de Perfil"
+        },
+        "buttons": {
+            "back": "Atrás",
+            "create": "Agregar Miembro"
+        },
+        "validation": {
+            "name": "Por favor, ingresa un nombre para el miembro",
+            "role": "Por favor, ingresa un puesto para el miembro"
+        }
+    },
+    "sidebar": {
+        "titles": {
+            "main": "APAZA",
+            "language": "Idioma"
+        },
+        "menu": {
+            "home": "Pagina Principal",
+            "dashboard": "Dashboard",
+            "gallery": "Galería",
+            "events": "Eventos",
+            "others": "Otros"
+        },
+        "languages": {
+            "spanish": "Español",
+            "english": "Inglés"
+        }
+    },
+    "aboutUs": {
+        "titles": {
+            "aboutUs": "Sobre nosotros",
+            "ourOrigins": "Nuestros Orígenes",
+            "ourMissionVision": "Nuestra Misión y Visión",
+            "mision": "Misión",
+            "vision": "Visión",
+            "ourHistory": "Nuestra Historia",
+            "month1": "Julio",
+            "month2": "2 de Abril",
+            "month3": "17 de Abril",
+            "month4": "3 de Octubre",
+            "timelineTitle1": "Inicios",
+            "timelineTitle2": "Primera Actividad",
+            "timelineTitle3": "Asamblea Constitutiva",
+            "timelineTitle4": "APAZA"
+        },
+        "body": {
+            "aboutDescription1": "Desde nuestras raíces como un pequeño grupo de ",
+            "aboutDescription2": "familias unidas por el amor y la esperanza",
+            "aboutDescription3": "hemos crecido con un solo objetivo: mejorar la calidad de vida de nuestros hijos con autismo. ",
+            "aboutDescription4": "Hoy, gracias al apoyo de organizaciones como ",
+            "aboutDescription5": "ACOTEAMA ",
+            "aboutDescription6": "y a la fuerza de nuestra comunidad, seguimos construyendo juntos un futuro lleno de ",
+            "aboutDescription7": "inclusión, comprensión y oportunidades ",
+            "aboutDescription8": "para todos. ",
+            "misionDescription1": "Nuestra misión es ",
+            "misionDescription2": "fortalecer todas las capacidades ",
+            "misionDescription3": "de las personas con Trastorno del Espectro Autista, con respeto y tolerancia, trabajando en equipo en la defensa y promoción de sus derechos para tener así una participación más solidaria y justa en la sociedad. ",
+            "visionDescription1": "Aspiramos a ",
+            "visionDescription2": "Mejorar la calidad de vida ",
+            "visionDescription3": "de las personas con autismo y sus familias. Creando desde su inicio un espacio formador, donde se brinden las herramientas necesarias para la inclusión en la sociedad de una manera efectiva. ",
+            "timelineDescription1": "un grupo de padres con hijos diagnosticados con autismo se reunió por primera vez. Este encuentro marcó el inicio de un viaje transformador en la búsqueda de mejorar la calidad de vida de sus seres queridos. A medida que el grupo crecía, se hizo evidente la necesidad de trabajar en la concienciación sobre el autismo, comenzando por los mismos padres, familiares y extendiéndose a la comunidad. El objetivo era claro: integrar a las personas con autismo en la sociedad de manera digna y respetuosa.",
+            "timelineDescription2": "la asociación celebró su primera actividad en conmemoración del Día Mundial de la Concienciación del Autismo, declarado por la Asamblea General de las Naciones Unidas el 18 de diciembre de 2007. Durante esta significativa conmemoración, se llevaron a cabo diversos actos culturales que destacaron la importancia de la inclusión.",
+            "timelineDescription3": "El 17 de abril de 2011, se realizó la Asamblea Constitutiva, donde los padres, unidos por su compromiso y pasión, dieron los primeros pasos para formalizar su esfuerzo colectivo en beneficio de sus hijos.",
+            "timelineDescription4": "Finalmente, el 3 de octubre de 2011, se inscribió oficialmente la Asociación de Personas con Autismo de la Zona Atlántica, conocida por sus siglas como APAZA, como una asociación legalmente constituida bajo la ley 218 Este hito marcó un importante avance en nuestra misión de promover la inclusión y brindar apoyo a las familias afectadas por el autismo en la región."
+        }
+    },
+    "dashboard": {
+        "titles": {
+            "welcome": "Bienvenido al panel de administración!"
+        }
+    }
+}
