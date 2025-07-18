@@ -7,7 +7,7 @@
             </div> -->
             <div class="events-container relative px-5">
 
-                <img src="/Apaza/.webp/EnConstruccion.png" alt="rompecabezas" class="img-fluid top-0 left-0 w-full h-full object-cover z2"
+                <img src="/Apaza/webp/EnConstruccion.png" alt="rompecabezas" class="img-fluid top-0 left-0 w-full h-full object-cover z2"
                     id="background" />
 
                 <img src="" alt=""  id="background">
