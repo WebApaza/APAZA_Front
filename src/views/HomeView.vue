@@ -9,18 +9,15 @@ import { ref, onMounted } from 'vue';
 import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoader'
 import BaseLoader from '@/components/loaders/BaseLoader.vue'
 import { useRouter } from 'vue-router';
-import TEA from '@/assets/imgwebp/awarenessTEA.jpg'
-import wthIsTEA from '@/assets/imgwebp/whtIsTEA.jpg'
-import AboutAPAZA from '@/assets/imgwebp/about.jpg';
 
 const PAGE = 'homepage';
 const router = useRouter();
 
 const heroImages = ref([
-  '/src/assets/imgwebp/carrusel1.jpg',
-  '/src/assets/imgwebp/carrusel2.jpg',
-  '/src/assets/imgwebp/carrusel3.jpg',
-  '/src/assets/imgwebp/carrusel4.jpg',
+  '/imgwebp/Carrusel1.jpg',
+  '/imgwebp/Carrusel2.jpg',
+  '/imgwebp/Carrusel3.jpg',
+  '/imgwebp/Carrusel4.jpg',
   // Agrega todas las imágenes que quieras para el carrusel
 ])
 
@@ -60,12 +57,12 @@ function navigate(url) {
 
   <section id="principal">
     <CardImageRight :title="lang.homepage?.titles?.whatIsTea || ''"
-      :description="lang.homepage?.body?.descriptionTea || ''"  :url="TEA" :order="false"
+      :description="lang.homepage?.body?.descriptionTea || ''"  url="/imgwebp/awarenessTEA.jpg" :order="false"
       data-aos="zoom-in-right" />
 
     <!-- v-if="lang.homepage && lang.homepage.titles && lang.homepage.body" -->
     <CardImageLeft :title="lang.homepage?.titles?.characteristicsTea || ''"
-      :description="lang.homepage?.body?.descriptionCharacteristicsTea || ''" :url="wthIsTEA"
+      :description="lang.homepage?.body?.descriptionCharacteristicsTea || ''" url="/imgwebp/whtIsTEA.jpg"
       :order="false" data-aos="zoom-in-left" />
   </section>
   
@@ -74,7 +71,7 @@ function navigate(url) {
 
     <div class="row align-items-center">
       <div class="col-lg-6 mb-4 mb-lg-0 px-4">
-        <img :src="AboutAPAZA" alt="Acerca de Nosotros" class="img-fluid about-image">
+        <img src="/imgwebp/about.jpg" alt="Acerca de Nosotros" class="img-fluid about-image">
       </div>
       <div class="col-lg-6 px-4">
         <h2 class="about-title">{{ lang.homepage?.titles?.informationTeaApaza || '' }}</h2>
