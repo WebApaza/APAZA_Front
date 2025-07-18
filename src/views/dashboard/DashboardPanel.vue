@@ -12,7 +12,7 @@
                 <div class="overlay"></div>
                 <img class="rounded aos aos-init aos-animate" data-aos="fade-right" data-aos-delay="200" width="227"
                   height="162" data-aos-duration="1000" data-aos-easing="ease-in-out"
-                  src="../../assets/imgwebp/apaza4.jpg" alt="">
+                  src="/imgwebp/apaza4.jpg" alt="">
               </div>
             </div>
 
@@ -20,21 +20,21 @@
               <div class="parent rounded">
                 <div class="overlay"></div>
                 <img class="rounded aos aos-init aos-animate" data-aos="fade-down" data-aos-delay="200"
-                  data-aos-duration="1000" src="../../assets/imgwebp/apaza.jpg" alt="">
+                  data-aos-duration="1000" src="/imgwebp/apaza.jpg" alt="">
               </div>
             </div>
             <div class="col-5 offset-1 px-2 mb-3">
               <div class="parent rounded">
                 <div class="overlay"></div>
                 <img class="rounded aos aos-init aos-animate" data-aos="fade-up" data-aos-delay="300"
-                  data-aos-duration="1500" src="../../assets/imgwebp/apaza5.jpg" alt="">
+                  data-aos-duration="1500" src="/imgwebp/apaza5.jpg" alt="">
               </div>
             </div>
             <div class="col-5 px-2 mb-3">
               <div class="parent rounded">
                 <div class="overlay"></div>
                 <img class="rounded aos aos-init aos-animate" data-aos="fade-left" data-aos-delay="300"
-                  data-aos-duration="1500" src="../../assets/imgwebp/apaza2.jpg" alt="">
+                  data-aos-duration="1500" src="/imgwebp/apaza2.jpg" alt="">
               </div>
             </div>
           </div>
