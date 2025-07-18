@@ -92,7 +92,7 @@ onUnmounted(() => {
         <div class="d-flex flex-column align-items-center justify-content-evenly content-wrapper">
           <h1 class="display-4 mb-3 hero-title">{{ title }}</h1>
           <div class="logo-container">
-            <img src="/Apaza/.webp/apaza_logo.webp" alt="Apaza Logo" class="hero-logo"/>
+            <img src="/Apaza/webp/apaza_logo.webp" alt="Apaza Logo" class="hero-logo"/>
           </div>
           <p class="lead mt-3 hero-description">{{ description }}</p>
         </div>

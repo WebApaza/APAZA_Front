@@ -29,7 +29,7 @@ const props = defineProps({
       <div class="row justify-content-center">
         <div class="d-flex flex-column align-items-center justify-content-evenly">
             <h1 class="display-4 mb-3">{{ title }}</h1>
-            <img src="/Apaza/.webp/apaza_logo.webp" alt="" class="p-3"/>
+            <img src="/Apaza/webp/apaza_logo.webp" alt="" class="p-3"/>
             <p class="lead mt-3">{{ description }}</p>
           </div>
       </div>

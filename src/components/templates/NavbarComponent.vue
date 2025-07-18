@@ -15,7 +15,7 @@ import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" @click="gotoHome">
         <img
-          src="/Apaza/.webp/apaza_logo.webp"
+          src="/Apaza/webp/apaza_logo.webp"
           alt="APAZA Logo"
           width="60"
           height="60"

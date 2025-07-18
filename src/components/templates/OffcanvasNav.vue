@@ -12,7 +12,7 @@ import AdminIcon from '../icons/MenuIcons/AdminIcon.vue'
   <nav ref="navbar" class="navbar navbar-solid navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" @click="gotoHome">
-        <img src="/Apaza/.webp/apaza_logo.webp" alt="APAZA Logo" class="me-2 navbar-logo" />
+        <img src="/Apaza/webp/apaza_logo.webp" alt="APAZA Logo" class="me-2 navbar-logo" />
         <span id="title" class="fs-2 fw-semibold">{{ lang.value?.title || '' }}</span>
       </a>
       <button
