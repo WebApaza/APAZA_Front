@@ -1,16 +1,41 @@
 <template>
-
+    <!--     <BaseCarousel :images="getImagesFromEvents()" v-if="!isInAdminPage(router.currentRoute.value.path)"/>
+ -->
     <section :class="hasToShowMargin()">
         <div class="events-container">
-            <!-- <div class="banner text-center py-5 rounded-5 rounded-top-0">
-                <h1 class="display-4 text-white">{{ lang?.navbar?.titles?.sponsors || "" }}</h1>
-            </div> -->
-            <div class="events-container relative px-5">
+            <div class="banner text-center py-5 rounded-5 rounded-top-0 mt-5 mt-md-4">
+                <h1 class="display-4 text-white">{{ lang?.collaborators }}</h1>
+                <div class="text-center" v-if="isAdmin">
+                    <button @click="goToAddEvent" class="btn btn-primary btn-lg btn-block"
+                        v-if="isInAdminPage(router.currentRoute.value.path)">{{
+                            lang?.eventhomepage?.titles?.addEvent }}</button>
+                </div>
+            </div>
+            <div class="relative px-5 mb-3 mb-md-5">
 
-                <img src="/Apaza/webp/EnConstruccion.png" alt="rompecabezas" class="img-fluid top-0 left-0 w-full h-full object-cover z2"
-                    id="background" />
+                <!--                 <img src="/Apaza/webp/rompecabezas.webp" alt="rompecabezas" class="img-fluid top-0 left-0 w-full h-full object-cover opacity-50 z2"
+                    id="background" /> -->
 
-                <img src="" alt=""  id="background">
+                <div class="z1">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        <CardPresentInfoOverImage v-for="(event, index) in events" :key="index" :title="event.title"
+                            :description="event.description"
+                            :image="event.image === 'Sin imagen' ? BaseEventImage : event.image"
+                            :date="format(event.date.replace('Z', ''), 'full', getConfig().CURRENT_LANG)"
+                            @click="goToEventPage(event)" />
+
+                    </div>
+                    <div v-if="charge" class="m-5 p-5 d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="ms-3 fs-4">{{ lang?.loading }}</p>
+                    </div>
+
+                    <div v-if="events.length === 0 && !charge" class="text-center">
+                        <h2>{{ lang?.eventhomepage?.titles?.noEvents }}</h2>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -19,25 +44,57 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { getEvents } from '@/services/EventService';
 import { useRouter } from 'vue-router';
 import { isUserLoggedAdmin, isInAdminPage } from '@/utils/Validations';
+import { format } from '@formkit/tempo';
 import { getLangForPage, getConfig } from '@/config/BasicConfig';
-
+import CardPresentInfoOverImage from '@/components/cards/CardPresentInfoOverImage.vue';
+import BaseCarousel from '@/components/carousel/BaseCarousel.vue';
+import BaseEventImage from '@/assets/imgwebp/APAZA_FONDO.webp'
 
 const router = useRouter();
-const members = ref([]);
+const events = ref([]);
 const isAdmin = ref(false);
-const PAGE = 'homepage';
+const charge = ref(true);
+const PAGE = 'eventhomepage';
 const lang = ref({});
 
+const getEvent = async () => {
+    try {
+        await getEvents().then(data => {
+            events.value = data.data.data;
+            charge.value = false;
+        });
+    } catch (error) {
+        router.go(0);
+    }
+};
 
+function getImagesFromEvents() {
+    return events.value.map(event => event.image);
+}
 
-function hasToShowMargin(){
-    return members.value.length === 0 && !isInAdminPage(router.currentRoute.value.path) ? 'mt-3' : '';
+function goToEventPage(event) {
+    sessionStorage.setItem('event', JSON.stringify(event));
+    router.push(`/event`);
+}
+
+function goToAddEvent() {
+    router.push('/admin/add-event');
+}
+
+/* function isInAdminPage(){
+    return router.currentRoute.value.path === "/admin/event-list";
+} */
+
+function hasToShowMargin() {
+    return events.value.length === 0 && !isInAdminPage(router.currentRoute.value.path) ? 'mt-3' : '';
 }
 
 onMounted(async () => {
     isAdmin.value = isUserLoggedAdmin();
+    await getEvent();
     await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
         lang.value = data;
     }).catch(() => {
@@ -132,8 +189,7 @@ onMounted(async () => {
 }
 
 .events-container {
-    /* background-color: #f8f9fa; */
-    /* background-color: var(--background-color-3); */
+    background: linear-gradient(135deg, var(--background-color-3) 0%, var(--background-color) 100%);
     min-height: 100vh;
 }
 
@@ -179,59 +235,4 @@ onMounted(async () => {
     /* border-top: 1px solid #f0f0f0; */
     border-top: 1px solid var(--background-color);
 }
-
-
-.member-card {
-    width: 280px;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-
-.member-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.profile-img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-
-.card-body {
-    padding: 20px;
-}
-
-.card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.card-text {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 1rem;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.social-icons i {
-    font-size: 1.2rem;
-    color: #555;
-    transition: color 0.3s ease;
-}
-
-.social-icons i:hover {
-    color: #007bff;
-}
-
 </style>

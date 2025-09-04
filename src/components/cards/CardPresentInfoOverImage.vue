@@ -1,7 +1,7 @@
 <template>
     <div class="col">
         <div class="card h-100 event-card">
-            <img :src="image" class="card-img-top" :alt="title">
+            <img :src="image != ''?image:BaseEventImage" class="card-img-top" :alt="title">
             <div class="card-body">
                 <h5 class="card-title">{{ title }}</h5>
                 <p class="card-text">{{ description }}</p>

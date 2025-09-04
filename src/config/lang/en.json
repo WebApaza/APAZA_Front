@@ -4,6 +4,7 @@
     "titleAboutUs": "About us",
     "services": "Services",
     "events": "Events",
+    "collaborators": "Collaborators",
     "welcome": "Welcome",
     "backText": "Back",
     "correctText": "Correct",
@@ -46,7 +47,7 @@
             "countTitle2": "Foundation",
             "countTitle3": "Board of Directors",
             "ourServices": "Our Services",
-            "ourEvents": "Our Events",
+            "ourEvents": "Recent Events",
             "events": "Events",
             "titleButton": "See More"
         },
@@ -99,6 +100,7 @@
         "titles": {
             "start": "Home",
             "team": "Board",
+            "logout": "Log out",
             "sponsors": "Partners",
             "events": "Events",
             "admin": "Manage",
@@ -125,7 +127,7 @@
         },
         "body": {
             "phrase": "Together building a more inclusive future for people with ASD.",
-            "infoText": "This project supports the APAZA organization with the collaboration of TCU-663 and TCU-751 Guápiles. Participating students: - Jeikel Medrano Montesino - Jonnathan García Loria - Elías Mena Fonseca - Diego Ríos Saborío"
+            "infoText": "This project supports the APAZA organization with the collaboration of TCU-663 and TCU-751 | UCR Recinto de Guápiles."
         }
     },
     "galleryadminpage": {

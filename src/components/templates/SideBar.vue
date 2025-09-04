@@ -15,37 +15,32 @@
           <ToHomeIcon class="menu-icon"></ToHomeIcon>
           <label>{{ lang?.sidebar?.menu?.home ?? '' }}</label>
         </li>
-        <li
-          class="d-flex flex-row aside-item"
-          @click="goToPage('/admin/dashboard')"
-          :class="{ active: activeRoute === '/admin/dashboard' }"
-        >
+        <li class="d-flex flex-row aside-item" @click="goToPage('/admin/dashboard')"
+          :class="{ active: activeRoute === '/admin/dashboard' }">
           <DashboardIcon class="menu-icon" />
           <label>{{ lang?.sidebar?.menu?.dashboard ?? '' }}</label>
         </li>
-        <li
-          class="d-flex flex-row aside-item"
-          @click="goToPage('/admin/add-gallery')"
-          :class="{ active: activeRoute === '/admin/add-gallery' }"
-        >
+        <li class="d-flex flex-row aside-item" @click="goToPage('/admin/add-gallery')"
+          :class="{ active: activeRoute === '/admin/add-gallery' }">
           <GalleryIcon class="menu-icon"></GalleryIcon>
           <label>{{ lang?.sidebar?.menu?.gallery ?? '' }}</label>
         </li>
-        <li
-          class="d-flex flex-row aside-item"
-          :class="{ active: activeRoute === '/admin/event-list' }"
-          @click="goToPage('/admin/event-list')"
-        >
+        <li class="d-flex flex-row aside-item" :class="{ active: activeRoute === '/admin/event-list' }"
+          @click="goToPage('/admin/event-list')">
           <EventsIcon class="menu-icon"></EventsIcon>
           <label>{{ lang?.sidebar?.menu?.events ?? '' }}</label>
         </li>
-        <li
-          class="d-flex flex-row aside-item"
-          :class="{ active: activeRoute === '/admin/board-list' }"
-          @click="goToPage( '/admin/board-list')"
-        >
-        <BoardIcon class="menu-icon"></BoardIcon>
-        <label>{{ lang?.navbar?.titles?.team || '' }}</label>
+        <li class="d-flex flex-row aside-item" :class="{ active: activeRoute === '/admin/board-list' }"
+          @click="goToPage('/admin/board-list')">
+          <BoardIcon class="menu-icon"></BoardIcon>
+          <label>{{ lang?.navbar?.titles?.team || '' }}</label>
+        </li>
+        <li @click="logout()" class="d-flex flex-row aside-item">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+            <path
+              d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
+          </svg>
+          <label>{{ lang?.navbar?.titles?.logout || '' }}</label>
         </li>
       </ul>
       <div class="d-flex justify-content-left">
@@ -53,11 +48,7 @@
       </div>
       <br>
       <div class="dropdown ms-3">
-        <button
-          class="btn btn-outline-secondary dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
+        <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           {{ lang?.sidebar?.titles?.language ?? '' }}
         </button>
         <ul class="dropdown-menu dropdown-menu-dark">
@@ -82,6 +73,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { setLang, LANGS, getLangForPage, getConfig } from '@/config/BasicConfig'
+import { removeCookie } from '@/config/CookiesService'
 import { rippleEffect } from '@/composables/rippleEffect'
 import DashboardIcon from '../icons/MenuIcons/DashboardIcon.vue'
 import GalleryIcon from '../icons/MenuIcons/GalleryIcon.vue'
@@ -109,18 +101,6 @@ function changeLanguage(lang) {
   this.router.go(0)
 }
 
-/* const toggleSidebar = () => {
-    sidebarActive.value = !sidebarActive.value;
-};
-
-const toggleSubmenu = (submenu) => {
-    if (submenu === 'home') {
-        homeSubmenuExpanded.value = !homeSubmenuExpanded.value;
-    } else if (submenu === 'page') {
-        pageSubmenuExpanded.value = !pageSubmenuExpanded.value;
-    }
-}; */
-
 onMounted(async () => {
   await getLangForPage(getConfig().CURRENT_LANG, PAGE)
     .then((data) => {
@@ -139,6 +119,11 @@ const isSidebarVisible = ref(true)
 const toggleSidebar = () => {
   isSidebarVisible.value = !isSidebarVisible.value
 }
+
+const logout = () => {
+  removeCookie('User')
+  router.go(0)
+}
 </script>
 
 <style scoped lang="scss">
@@ -148,7 +133,7 @@ const toggleSidebar = () => {
   min-width: 250px;
   max-width: 250px;
   min-height: 100vh;
-  background-color: rgba(33,37,41, 1);
+  background-color: rgba(33, 37, 41, 1);
   transition: all 0.3s;
   position: fixed;
   font-family: var(--text-font-1);
@@ -182,6 +167,7 @@ const toggleSidebar = () => {
 #sidebar ul .aside-item:not(.active):hover {
   background: rgba(var(--white-color-rgb), 0.1)
 }
+
 #sidebar ul li label:hover {
   cursor: pointer;
 }
@@ -191,6 +177,7 @@ const toggleSidebar = () => {
   padding-left: 30px !important;
   background-color: var(--background-color-7);
 }
+
 .menu-icon {
   @include menuIcon();
 }

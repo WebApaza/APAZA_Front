@@ -10,7 +10,7 @@
                         lang?.eventhomepage?.titles?.addEvent }}</button>
                 </div>
             </div>
-            <div class="events-container relative px-5">
+            <div class="events-container relative px-5 mb-3 mb-md-5">
 
                 <img src="/Apaza/webp/rompecabezas.webp" alt="rompecabezas" class="img-fluid top-0 left-0 w-full h-full object-cover opacity-50 z2"
                     id="background" />
@@ -18,7 +18,7 @@
                 <div class="z1">
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <CardPresentInfoOverImage v-for="(event, index) in events" :key="index" :title="event.title"
-                            :description="event.description" :image="event.image"
+                            :description="event.description" :image="event.image === 'Sin imagen'? BaseEventImage: event.image"
                             :date="format(event.date.replace('Z', ''), 'full', getConfig().CURRENT_LANG)" @click="goToEventPage(event)" />
 
                     </div>
@@ -48,6 +48,7 @@ import { format } from '@formkit/tempo';
 import { getLangForPage, getConfig } from '@/config/BasicConfig';
 import CardPresentInfoOverImage from '@/components/cards/CardPresentInfoOverImage.vue';
 import BaseCarousel from '@/components/carousel/BaseCarousel.vue';
+import BaseEventImage from '@/assets/imgwebp/APAZA_FONDO.webp'
 
 const router = useRouter();
 const events = ref([]);

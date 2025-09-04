@@ -338,7 +338,7 @@ function goToPage(url) {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url('/Background/bg-admin.webp');
+  background-image: url('../../assets/imgwebp/APAZA_FONDO.webp');
   background-size: cover;
 
   .container-login {

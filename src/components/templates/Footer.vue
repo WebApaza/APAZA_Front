@@ -16,7 +16,7 @@
                         <!-- Footer Social Area-->
                         <div class="footer_social_area">
 
-                            <a  data-toggle="tooltip" data-placement="top" title="FaceBook"
+                            <a data-toggle="tooltip" data-placement="top" title="FaceBook"
                                 data-original-title="Facebook">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-facebook" viewBox="0 0 16 16">
@@ -25,8 +25,7 @@
                                 </svg>
                             </a>
 
-                            <a  data-toggle="tooltip" data-placement="top" title=""
-                                data-original-title="Pinterest">
+                            <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Pinterest">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-instagram" viewBox="0 0 16 16">
                                     <path
@@ -34,16 +33,18 @@
                                 </svg>
                             </a>
 
-                            <a  data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype">
+                            <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-tiktok" viewBox="0 0 16 16">
                                     <path
                                         d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z" />
                                 </svg>
                             </a>
-                             <a data-toggle="tooltip" data-placement="top" title="YouTube">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
-                                    <path d="M8.051 1.999h-.002c-.745.003-4.742.045-5.958.542A2.5 2.5 0 0 0 .427 5.218 29.46 29.46 0 0 0 0 8c0 .962.065 1.912.193 2.78a2.5 2.5 0 0 0 1.664 2.677c1.221.5 5.226.542 5.963.542h.002c.737 0 4.742-.042 5.958-.542a2.5 2.5 0 0 0 1.664-2.677A29.46 29.46 0 0 0 16 8c0-.962-.065-1.912-.193-2.78a2.5 2.5 0 0 0-1.664-2.677C12.794 2.044 8.797 2.002 8.051 1.999zM6.75 10.5v-5l4.5 2.5-4.5 2.5z"/>
+                            <a data-toggle="tooltip" data-placement="top" title="YouTube">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-youtube" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8.051 1.999h-.002c-.745.003-4.742.045-5.958.542A2.5 2.5 0 0 0 .427 5.218 29.46 29.46 0 0 0 0 8c0 .962.065 1.912.193 2.78a2.5 2.5 0 0 0 1.664 2.677c1.221.5 5.226.542 5.963.542h.002c.737 0 4.742-.042 5.958-.542a2.5 2.5 0 0 0 1.664-2.677A29.46 29.46 0 0 0 16 8c0-.962-.065-1.912-.193-2.78a2.5 2.5 0 0 0-1.664-2.677C12.794 2.044 8.797 2.002 8.051 1.999zM6.75 10.5v-5l4.5 2.5-4.5 2.5z" />
                                 </svg>
                             </a>
 
@@ -70,27 +71,13 @@
                 <div class="col-12 col-sm-6 col-lg">
                     <div class="single-footer-widget section_padding_0_130">
                         <!-- Widget Title-->
-                        <h5 class="title widget-title">{{ lang?.events }}</h5>
-                        <!-- Footer Menu-->
-                        <div class="footer_menu">
-                            <ul>
-                                <li><a >{{ lang?.footer?.titles?.help }}</a></li>
-                                <li><a >{{ lang?.footer?.titles?.info }}</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Widget-->
-                <div class="col-12 col-sm-6 col-lg">
-                    <div class="single-footer-widget section_padding_0_130">
-                        <!-- Widget Title-->
                         <h5 class="title widget-title">{{ lang?.footer?.titles?.contact }}</h5>
                         <!-- Footer Menu-->
                         <div class="footer_menu">
                             <ul>
-                                <li><a >{{ lang?.footer?.titles?.info }}</a></li>
-                                <li><a >{{ EMAIL_ADRESS }}</a></li>
-                                <li><a >{{ lang?.footer?.titles?.whatsapp }}</a></li>
+                                <li><a>{{ lang?.footer?.titles?.info }}</a></li>
+                                <li><a>{{ EMAIL_ADRESS }}</a></li>
+                                <li><a>{{ lang?.footer?.titles?.whatsapp }}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -98,10 +85,10 @@
             </div>
         </div>
 
-        <div class="row">
-        <p class="text text-center"> {{ lang?.footer?.body?.infoText }}</p>
-    </div>
-    
+        <div class="row mt-4">
+            <p class="text text-center"> {{ lang?.footer?.body?.infoText }}</p>
+        </div>
+
     </footer>
 </template>
 
@@ -131,7 +118,7 @@ function navigate(url) {
 
 </script>
 
-<style>
+<style scoped>
 body {
     margin-top: 20px;
 }
@@ -268,9 +255,10 @@ body {
 .footer_social_area a {
     border-radius: 50%;
     height: 40px;
-    text-align: center;
     width: 40px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--accent-color);
     line-height: 40px;
     -webkit-box-shadow: none;
@@ -288,11 +276,11 @@ body {
     color: #ffffff;
 }
 
-.text{
+.text {
     color: var(--text-color-3);
 }
 
-li{
+li {
     cursor: pointer;
 }
 

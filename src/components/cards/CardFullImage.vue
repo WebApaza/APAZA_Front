@@ -94,12 +94,7 @@ function goToEventPage(link) {
 }
 
 .card-btn {
-    background-color: var(--accent-color);
+    background-color: var(--accent-color) !important;
     border: none;
-    transition: background-color 0.3s ease;
-}
-
-.card-btn:hover {
-    background-color: var(--secondary-color);
 }
 </style>
