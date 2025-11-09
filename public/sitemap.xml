@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
+  <url>
+    <loc>https://apazaweb.netlify.app/</loc>
+  </url>
+
+  <!-- Login -->
+  <url>
+    <loc>https://apazaweb.netlify.app/login</loc>
+  </url>
+
+  <!-- Eventos -->
+  <url>
+    <loc>https://apazaweb.netlify.app/events</loc>
+  </url>
+
+  <!-- Página de un solo evento (si es estática) -->
+  <url>
+    <loc>https://apazaweb.netlify.app/event</loc>
+  </url>
+
+  <!-- Sobre nosotros -->
+  <url>
+    <loc>https://apazaweb.netlify.app/about</loc>
+  </url>
+
+  <!-- Junta directiva -->
+  <url>
+    <loc>https://apazaweb.netlify.app/board</loc>
+  </url>
+
+  <!-- Página de un miembro (si es estática) -->
+  <url>
+    <loc>https://apazaweb.netlify.app/member</loc>
+  </url>
+
+  <!-- Desarrolladores -->
+  <url>
+    <loc>https://apazaweb.netlify.app/developers</loc>
+  </url>
+
+  <!-- Aliados / Partners -->
+  <url>
+    <loc>https://apazaweb.netlify.app/partners</loc>
+  </url>
+
+</urlset>
