@@ -1,25 +1,30 @@
 <template>
-    <BaseCarousel :images="getImagesFromEvents()" v-if="!isInAdminPage(router.currentRoute.value.path)"/>
 
     <section :class="hasToShowMargin()">
         <div class="events-container">
             <div class="banner text-center py-5 rounded-5 rounded-top-0">
-                <h1 class="display-4 text-white">{{ lang?.events }}</h1>
+                <h1 class="display-4 text-white mt-4 mt-md-3 p-3">{{ lang?.events }}</h1>
                 <div class="text-center" v-if="isAdmin">
-                    <button @click="goToAddEvent" class="btn btn-primary btn-lg btn-block" v-if="isInAdminPage(router.currentRoute.value.path)">{{
-                        lang?.eventhomepage?.titles?.addEvent }}</button>
+                    <button @click="goToAddEvent" class="btn btn-primary btn-lg btn-block"
+                        v-if="isInAdminPage(router.currentRoute.value.path)">{{
+                            lang?.eventhomepage?.titles?.addEvent }}</button>
                 </div>
+                <BaseCarousel :images="getImagesFromEvents()" v-if="!isInAdminPage(router.currentRoute.value.path)" />
+
             </div>
+
             <div class="events-container relative px-5 mb-3 mb-md-5">
 
-                <img src="/Apaza/webp/rompecabezas.webp" alt="rompecabezas" class="img-fluid top-0 left-0 w-full h-full object-cover opacity-50 z2"
-                    id="background" />
+                <img src="/Apaza/webp/rompecabezas.webp" alt="rompecabezas"
+                    class="img-fluid top-0 left-0 w-full h-full object-cover opacity-50 z2" id="background" />
 
                 <div class="z1">
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <CardPresentInfoOverImage v-for="(event, index) in events" :key="index" :title="event.title"
-                            :description="event.description" :image="event.image === 'Sin imagen'? BaseEventImage: event.image"
-                            :date="format(event.date.replace('Z', ''), 'full', getConfig().CURRENT_LANG)" @click="goToEventPage(event)" />
+                            :description="event.description"
+                            :image="event.image === 'Sin imagen' ? BaseEventImage : event.image"
+                            :date="format(event.date.replace('Z', ''), 'full', getConfig().CURRENT_LANG)"
+                            @click="goToEventPage(event)" />
 
                     </div>
                     <div v-if="charge" class="m-5 p-5 d-flex justify-content-center">
@@ -30,6 +35,7 @@
                     </div>
 
                     <div v-if="events.length === 0 && !charge" class="text-center">
+                        <LottieAnimation></LottieAnimation>
                         <h2>{{ lang?.eventhomepage?.titles?.noEvents }}</h2>
                     </div>
                 </div>
@@ -49,6 +55,7 @@ import { getLangForPage, getConfig } from '@/config/BasicConfig';
 import CardPresentInfoOverImage from '@/components/cards/CardPresentInfoOverImage.vue';
 import BaseCarousel from '@/components/carousel/BaseCarousel.vue';
 import BaseEventImage from '@/assets/imgwebp/APAZA_FONDO.webp'
+import LottieAnimation from '@/components/LottieAnimation.vue';
 
 const router = useRouter();
 const events = ref([]);
@@ -64,7 +71,7 @@ const getEvent = async () => {
             charge.value = false;
         });
     } catch (error) {
-        router.go(0); 
+        router.go(0);
     }
 };
 
@@ -85,7 +92,7 @@ function goToAddEvent() {
     return router.currentRoute.value.path === "/admin/event-list";
 } */
 
-function hasToShowMargin(){
+function hasToShowMargin() {
     return events.value.length === 0 && !isInAdminPage(router.currentRoute.value.path) ? 'mt-3' : '';
 }
 
@@ -186,14 +193,14 @@ onMounted(async () => {
 }
 
 .events-container {
-    /* background-color: #f8f9fa; */
-    /* background-color: var(--background-color-3); */
     min-height: 100vh;
 }
 
 .banner {
-    /* background: linear-gradient(45deg, #ff6b6b, #4ecdc4); */
-    background: linear-gradient(45deg, var(--primary-color), var(--background-color));
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin-bottom: 2rem;
 }
 
@@ -203,7 +210,6 @@ onMounted(async () => {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    /* <-- El box-shadow no importa porque siempre es negro por eso no puse var() */
 }
 
 .event-card:hover {

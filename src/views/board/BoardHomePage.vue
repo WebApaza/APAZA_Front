@@ -34,7 +34,7 @@
                     </div>
 
                     <div v-if="members.length === 0 && !charge" class="text-center">
-                        <h2>{{ lang?.boardhomepage?.titles?.nomembers }}</h2>
+                        <h4 class="nomember p-4">{{ lang?.boardhomepage?.titles?.nomembers }}</h4>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,9 @@ onMounted(async () => {
 .relative {
     position: relative;
 }
-
+.nomember {
+    color: var(--text-color-2);
+}
 .absolute {
     position: absolute;
 }

@@ -5,8 +5,8 @@
     <aside id="sidebar" :class="{ active: !isSidebarVisible }">
       <div class="sidebar-header d-flex mh-25">
         <button class="toggle-btn btn btn-primary d-md-none me-2" @click="toggleSidebar">☰</button>
-        <a @click="goToPage('/')">
-          <h3 class="text-white">{{ lang?.sidebar?.titles?.main }}</h3>
+        <a @click="goToPage('/')" class="w-100" style="text-decoration: none">
+          <h3 class="text-white text-md-start text-end">{{ lang?.sidebar?.titles?.main }}</h3>
         </a>
       </div>
 
@@ -35,16 +35,24 @@
           <BoardIcon class="menu-icon"></BoardIcon>
           <label>{{ lang?.navbar?.titles?.team || '' }}</label>
         </li>
+
+        <li class="d-flex flex-row aside-item" @click="goToPage('/admin/collaborators')"
+          :class="{ active: activeRoute === '/admin/collaborators' }">
+          <CollaboratorsIcon class="menu-icon" />
+          <label>{{ lang?.navbar?.titles?.collaborators || '' }}</label>
+        </li>
         <li @click="logout()" class="d-flex flex-row aside-item">
-          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+            fill="#e3e3e3">
             <path
               d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
           </svg>
           <label>{{ lang?.navbar?.titles?.logout || '' }}</label>
         </li>
+
       </ul>
-      <div class="d-flex justify-content-left">
-        <ButtonDarkMode class="bs-padding" :themeLabel="lang" />
+      <div class=" w-100 d-flex justify-content-space-between px-3">
+        <ButtonDarkMode class="bs-padding" :theme-label="lang?.sidebar" :display-label="false" :w100="true"/>
       </div>
       <br>
       <div class="dropdown ms-3">
@@ -72,6 +80,7 @@
 //------------------------------------------------------------------------------------------PARA @ProfesorAlbino POR FAVOR USAR EL SCRIPT SETUP, NO EL OTRO
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import CollaboratorsIcon from '../icons/MenuIcons/CollaboratorsIcon.vue'
 import { setLang, LANGS, getLangForPage, getConfig } from '@/config/BasicConfig'
 import { removeCookie } from '@/config/CookiesService'
 import { rippleEffect } from '@/composables/rippleEffect'
@@ -205,9 +214,13 @@ const logout = () => {
 }
 
 .toggle-btn {
-  background-color: var(--background-color-2);
+  position: absolute;
+  top: 15px;
+  left: 20px;
   color: var(--text-color-1);
   border: none;
+  transition: .3s ease;
+  z-index: 100;
 }
 
 .toggle-btn:hover {

@@ -1,97 +1,98 @@
 <template>
-    <div class="event-detail my-5">
-        <div class="banner text-center py-5 mb-5">
-            <h1 class="display-4 text-white">{{ event.title }}</h1>
-            <p class="lead text-white">{{ event.date }}</p>
-        </div>
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md-8">
-                    <img :src="event.image" class="d-block w-100" alt="Imagen del evento">
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ lang?.eventpage?.titles?.main }}</h5>
-                            <p class="card-text"><strong>{{ lang?.eventpage?.titles?.date }}:</strong> {{ event.date }}
-                            </p>
-                            <div class="my-2" v-if="isAdmin">
-                                <button class="btn btn-secondary" @click="goToPage('/admin/event-list')">{{
-                                    lang?.eventpage?.actions?.listAdmin }}</button>
-                                <button class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#editEventModal">{{ lang?.eventpage?.actions?.edit }}</button>
-                                <button class="btn btn-danger " @click="modalDelete">{{
-                                    lang?.eventpage?.actions?.delete }}</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-5">
-                <div class="col-12">
-                    <h2 class="ev-detail">{{ lang?.eventpage?.titles?.description }}</h2>
-                    <p class="ev-detail">{{ event.description }}</p>
-                </div>
-            </div>
-
-            <div class="row mt-5">
-                <div class="col-12 text-center">
-                    <button @click="goToPage('/events')"
-                        class="btn btn-secondary">{{ lang?.eventpage?.actions?.list }}</button>
-                </div>
-            </div>
-        </div>
+  <div class="event-detail mt-5 pb-5">
+    <div class="banner text-center py-5 mb-5">
+      <h1 class="display-4 text-white">{{ event.title }}</h1>
+      <p class="lead text-white">{{ event.date }}</p>
     </div>
-    <BaseModal v-if="isAdmin" :title="modalDeleteInfo.title" :body="modalDeleteInfo.body"
-        :closeText="modalDeleteInfo.closeText" :acceptText="modalDeleteInfo.acceptText"
-        :onAccept="modalDeleteInfo.onAccept" colorAcceptButton="danger" />
-
-    <div class="modal fade" id="editEventModal" tabindex="-1" aria-labelledby="editEventModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editEventModalLabel">{{ lang?.eventpage?.editModal?.title }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form @submit.prevent="editEvent" class="needs-validation" novalidate>
-                        <div class="mb-3 text-center">
-                            <img :src="imagePresent || event.image" class="img-thumbnail" alt="Imagen actual del evento"
-                                width="150">
-                        </div>
-                        <div class="mb-3">
-                            <label for="title" class="form-label">{{ lang?.eventpage?.editModal?.titleEvent }}</label>
-                            <input v-model="updateEvents.title" type="text" class="form-control" id="title" />
-                        </div>
-                        <div class="mb-3">
-                            <label for="description" class="form-label">{{ lang?.eventpage?.editModal?.description
-                                }}</label>
-                            <textarea v-model="updateEvents.description" class="form-control" id="description"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="type" class="form-label">{{ lang?.eventaddpage?.titles?.type ?? '' }}</label>
-                            <select v-model="updateEvents.type" class="form-select" id="type" required>
-                                <option value="family">{{ lang?.eventaddpage?.options?.family ?? '' }}</option>
-                                <option value="cultural">{{ lang?.eventaddpage?.options?.cultural ?? '' }}</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="image" class="form-label">{{ lang?.eventpage?.editModal?.image }}</label>
-                            <input type="file" class="form-control" id="image" @change="handleImageUpload"
-                                accept="image/*" />
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary btn-lg" :disabled="isLoading">
-                                <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status"
-                                    aria-hidden="true"></span>
-                                {{ isLoading ? lang?.eventpage?.editModal?.saving : lang?.eventpage?.editModal?.save }}
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-8">
+          <img :src="event.image" class="d-block w-100" alt="Imagen del evento">
         </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ lang?.eventpage?.titles?.main }}</h5>
+              <p class="card-text"><strong>{{ lang?.eventpage?.titles?.date }}:</strong> {{ event.date }}
+              </p>
+              <div class="my-2" v-if="isAdmin">
+                <button class="btn btn-secondary" @click="goToPage('/admin/event-list')">
+                  <svg  class="me-2" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#e3e3e3">
+                    <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
+                  </svg>
+                  {{
+                    lang?.eventpage?.actions?.listAdmin }}</button>
+                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editEventModal">{{
+                  lang?.eventpage?.actions?.edit }}</button>
+                <button class="btn btn-danger " @click="modalDelete">{{
+                  lang?.eventpage?.actions?.delete }}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-12">
+          <h2 class="ev-detail">{{ lang?.eventpage?.titles?.description }}</h2>
+          <p class="ev-detail">{{ event.description }}</p>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-12 text-center">
+          <button @click="goToPage('/events')" class="btn btn-secondary">{{ lang?.eventpage?.actions?.list }}</button>
+        </div>
+      </div>
     </div>
+  </div>
+  <BaseModal v-if="isAdmin" :title="modalDeleteInfo.title" :body="modalDeleteInfo.body"
+    :closeText="modalDeleteInfo.closeText" :acceptText="modalDeleteInfo.acceptText" :onAccept="modalDeleteInfo.onAccept"
+    colorAcceptButton="danger" />
+
+  <div class="modal fade" id="editEventModal" tabindex="-1" aria-labelledby="editEventModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editEventModalLabel">{{ lang?.eventpage?.editModal?.title }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form @submit.prevent="editEvent" class="needs-validation" novalidate>
+            <div class="mb-3 text-center">
+              <img :src="imagePresent || event.image" class="img-thumbnail" alt="Imagen actual del evento" width="150">
+            </div>
+            <div class="mb-3">
+              <label for="title" class="form-label">{{ lang?.eventpage?.editModal?.titleEvent }}</label>
+              <input v-model="updateEvents.title" type="text" class="form-control" id="title" />
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">{{ lang?.eventpage?.editModal?.description
+              }}</label>
+              <textarea v-model="updateEvents.description" class="form-control" id="description"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="type" class="form-label">{{ lang?.eventaddpage?.titles?.type ?? '' }}</label>
+              <select v-model="updateEvents.type" class="form-select" id="type" required>
+                <option value="family">{{ lang?.eventaddpage?.options?.family ?? '' }}</option>
+                <option value="cultural">{{ lang?.eventaddpage?.options?.cultural ?? '' }}</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="image" class="form-label">{{ lang?.eventpage?.editModal?.image }}</label>
+              <input type="file" class="form-control" id="image" @change="handleImageUpload" accept="image/*" />
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-lg" :disabled="isLoading">
+                <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                {{ isLoading ? lang?.eventpage?.editModal?.saving : lang?.eventpage?.editModal?.save }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -110,9 +111,9 @@ const isAdmin = ref(false);
 
 const event = ref({});
 const updateEvents = ref({
-    title: "",
-    description: "",
-    type: ""
+  title: "",
+  description: "",
+  type: ""
 });
 const lang = ref({});
 const PAGE = 'eventpage';
@@ -125,103 +126,103 @@ const date = ref(null);
 
 
 const modalDelete = () => {
-    const myModal = Modal.getOrCreateInstance(document.getElementById('staticBackdrop'));
-    myModal.show();
+  const myModal = Modal.getOrCreateInstance(document.getElementById('staticBackdrop'));
+  myModal.show();
 }
 
 const modalDeleteInfo = ref({
-    title: infModal.value.title,
-    body: infModal.value.message,
-    closeText: infModal.value.cancel,
-    acceptText: infModal.value.delete,
-    onAccept: async () => {
-        if (!isAdmin.value) return;
-        await deleteEvent(event.value._id);
-        router.push('/events');
-    }
+  title: infModal.value.title,
+  body: infModal.value.message,
+  closeText: infModal.value.cancel,
+  acceptText: infModal.value.delete,
+  onAccept: async () => {
+    if (!isAdmin.value) return;
+    await deleteEvent(event.value._id);
+    router.push('/events');
+  }
 });
 
 function goToPage(url) {
-    router.push(url);
+  router.push(url);
 }
 
 watchEffect(() => {
-    if (infModal.value) {
-        modalDeleteInfo.value.title = infModal.value.title;
-        modalDeleteInfo.value.body = infModal.value.message;
-        modalDeleteInfo.value.closeText = infModal.value.cancel;
-        modalDeleteInfo.value.acceptText = infModal.value.delete;
+  if (infModal.value) {
+    modalDeleteInfo.value.title = infModal.value.title;
+    modalDeleteInfo.value.body = infModal.value.message;
+    modalDeleteInfo.value.closeText = infModal.value.cancel;
+    modalDeleteInfo.value.acceptText = infModal.value.delete;
 
-    }
+  }
 });
 
 const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-        previewImage.value = file;
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            imagePresent.value = e.target.result;
-        }
-        reader.readAsDataURL(file);
+  const file = event.target.files[0];
+  if (file) {
+    previewImage.value = file;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      imagePresent.value = e.target.result;
     }
+    reader.readAsDataURL(file);
+  }
 }
 
 const closeModalEdit = () => {
-    Modal.getOrCreateInstance(document.getElementById('editEventModal')).hide();
+  Modal.getOrCreateInstance(document.getElementById('editEventModal')).hide();
 };
 
 const editEvent = async () => {
-    try {
-        isLoading.value = true;
-        const editedEvent = {
-            id: event.value._id,
-            title: updateEvents.value.title,
-            type: updateEvents.value.type,
-            date: date.value,
-            description: updateEvents.value.description,
-            image: event.value.image,
-            newImage: previewImage.value || null
-        };
-        await updateEvent(editedEvent);
-        setTimeout(() => {
-            isLoading.value = false;
-            closeModalEdit();
-            if (previewImage.value)
-                event.value.image = imagePresent.value;
-            event.value.title = updateEvents.value.title;
-            event.value.description = updateEvents.value.description;
-            event.value.type = updateEvents.value.type;
-            sessionStorage.setItem('event', JSON.stringify(event.value));
-            imagePresent.value = null;
-        }, 1500);
-    } catch (error) {
-        console.error('Error al actualizar el evento:', error);
-    }
+  try {
+    isLoading.value = true;
+    const editedEvent = {
+      id: event.value._id,
+      title: updateEvents.value.title,
+      type: updateEvents.value.type,
+      date: date.value,
+      description: updateEvents.value.description,
+      image: event.value.image,
+      newImage: previewImage.value || null
+    };
+    await updateEvent(editedEvent);
+    setTimeout(() => {
+      isLoading.value = false;
+      closeModalEdit();
+      if (previewImage.value)
+        event.value.image = imagePresent.value;
+      event.value.title = updateEvents.value.title;
+      event.value.description = updateEvents.value.description;
+      event.value.type = updateEvents.value.type;
+      sessionStorage.setItem('event', JSON.stringify(event.value));
+      imagePresent.value = null;
+    }, 1500);
+  } catch (error) {
+    console.error('Error al actualizar el evento:', error);
+  }
 };
 
 onMounted(async () => {
-    isAdmin.value = isUserLoggedAdmin();
-    const item = sessionStorage.getItem('event');
-    if (!item) router.push('/events');
+  isAdmin.value = isUserLoggedAdmin();
+  const item = sessionStorage.getItem('event');
+  if (!item) router.push('/events');
 
-    const objItem = JSON.parse(item); //objItem.date = objItem.date.replace('Z', ''); // <-- Esto es para quitar la Z del final de la fecha, si no se quita le quita un día a la fecha
+  const objItem = JSON.parse(item); //objItem.date = objItem.date.replace('Z', ''); // <-- Esto es para quitar la Z del final de la fecha, si no se quita le quita un día a la fecha
 
 
-    
-    date.value = new Date(objItem.date.replace('Z', '')).toISOString().slice(0, -1);
-    objItem.date = format(new Date(objItem.date.replace('Z', '')), { date: "full" }, getConfig().CURRENT_LANG);
-    event.value = objItem;
-    updateEvents.value.title = event.value.title;
-    updateEvents.value.description = event.value.description;
-    updateEvents.value.type = event.value.type;
 
-    await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
-        lang.value = data;
-        infModal.value = lang.value.eventpage.modal;
-    }).catch(() => {
-        router.go(0);
-    });
+  date.value = new Date(objItem.date.replace('Z', '')).toISOString().slice(0, -1);
+  objItem.date = format(new Date(objItem.date.replace('Z', '')), { date: "full" }, getConfig().CURRENT_LANG);
+  event.value = objItem;
+  updateEvents.value.title = event.value.title;
+  updateEvents.value.description = event.value.description;
+  updateEvents.value.type = event.value.type;
+
+  await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
+    lang.value = data;
+    infModal.value = lang.value.eventpage.modal;
+  }).catch(() => {
+    router.go(0);
+  });
 
 });
 </script>
@@ -328,8 +329,8 @@ onMounted(async () => {
 
 .card-body {
   padding: 2.5rem;
-    background: var(--background-color-4);
-    border-radius: 20px;
+  background: var(--background-color-4);
+  border-radius: 20px;
 }
 
 .card-title {
@@ -366,6 +367,7 @@ onMounted(async () => {
 /* Botones de Administración */
 .my-2 {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 0.8rem;
   margin-top: 2rem;
@@ -378,7 +380,7 @@ onMounted(async () => {
   padding: 12px 24px;
   border-radius: 12px;
   transition: all 0.3s ease;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 0.5px;
   font-size: 0.9rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -498,9 +500,10 @@ onMounted(async () => {
   width: 100%;
 }
 
-.modal-body{
-      background: var(--background-color-4);
+.modal-body {
+  background: var(--background-color-4);
 }
+
 .modal-body .text-center {
   margin-bottom: 1.5rem;
 }
@@ -532,7 +535,8 @@ onMounted(async () => {
   margin-bottom: 0.5rem;
 }
 
-.form-control, .form-select {
+.form-control,
+.form-select {
   border: 2px solid #e9ecef;
   border-radius: 10px;
   padding: 12px 16px;
@@ -540,7 +544,8 @@ onMounted(async () => {
   transition: all 0.3s ease;
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
   border-color: var(--accent-color);
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
@@ -562,6 +567,7 @@ onMounted(async () => {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -573,6 +579,7 @@ onMounted(async () => {
     opacity: 0;
     transform: translateX(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -584,6 +591,7 @@ onMounted(async () => {
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -603,50 +611,50 @@ onMounted(async () => {
     padding: 3rem 0;
     border-radius: 0 0 20px 20px;
   }
-  
+
   .banner .display-4 {
     font-size: 2rem;
   }
-  
+
   .banner .lead {
     font-size: 1.1rem;
   }
-  
+
   .row.mb-5 {
     gap: 1.5rem;
     flex-direction: column;
   }
-  
+
   .col-md-4 {
     order: -1;
   }
-  
+
   .col-md-8 {
     order: 1;
   }
-  
+
   .card-body {
     padding: 1.5rem;
   }
-  
+
   .my-2 {
     justify-content: center;
   }
-  
+
   .btn {
     flex: 1;
     min-width: 120px;
   }
-  
+
   .ev-detail h2 {
     font-size: 1.8rem;
   }
-  
+
   .ev-detail p {
     padding: 1.5rem;
     font-size: 1.1rem;
   }
-  
+
   .modal-dialog {
     margin: 1rem auto;
     max-width: 95vw;
@@ -657,33 +665,33 @@ onMounted(async () => {
   .banner {
     padding: 2rem 0;
   }
-  
+
   .banner .display-4 {
     font-size: 1.8rem;
   }
-  
+
   .card-body {
     padding: 1rem;
   }
-  
+
   .my-2 {
     flex-direction: column;
   }
-  
+
   .btn {
     width: 100%;
   }
-  
+
   .ev-detail p {
     padding: 1rem;
     font-size: 1rem;
   }
-  
+
   .modal-dialog {
     margin: 0.5rem auto;
     max-width: 98vw;
   }
-  
+
   .modal-body {
     padding: 1rem;
   }
@@ -716,7 +724,7 @@ onMounted(async () => {
     background: white;
     border: 2px solid #000;
   }
-  
+
   .btn {
     border: 2px solid #000;
   }

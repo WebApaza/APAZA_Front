@@ -1,53 +1,21 @@
-<script setup>
-import ButtonDarkMode from '../ButtonDarkMode.vue'
-import LightMenuIcon from '../icons/LightMenuIcon.vue'
-import IconHome from '../icons/MenuIcons/HomeIcon.vue'
-import ManagementBoard from '../icons/MenuIcons/GroupIcon.vue'
-import PartnerIcon from '../icons/MenuIcons/PartnerIcon.vue'
-import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
-</script>
-
 <template>
-  <nav
-    ref="navbar"
-    :class="['navbar', 'navbar-solid', 'navbar-expand-lg', 'fixed-top', navbarClass]"
-  >
+  <nav ref="navbar" :class="['navbar', 'navbar-solid', 'navbar-expand-lg', 'fixed-top', navbarClass]">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" @click="gotoHome">
-        <img
-          src="/Apaza/webp/apaza_logo.webp"
-          alt="APAZA Logo"
-          width="60"
-          height="60"
-          class="me-2 navbar-logo"
-        />
+        <img src="/Apaza/webp/apaza_logo.webp" alt="APAZA Logo" width="60" height="60" class="me-2 navbar-logo" />
         <span id="title" class="fs-2 fw-semibold">{{ lang.value?.title || '' }}</span>
       </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <LightMenuIcon></LightMenuIcon>
       </button>
       <div class="collapse navbar-collapse fs-5" id="navbarNav" ref="navbarCollapse">
         <ul class="navbar-nav ms-auto">
-          <li
-            :class="[{ active: $route.path === '/' }, 'nav-item']"
-            aria-current="page"
-            @click="gotoHome"
-          >
+          <li :class="[{ active: $route.path === '/' }, 'nav-item']" aria-current="page" @click="gotoHome">
             <IconHome class="menu-icon"></IconHome>
             <label>{{ lang.value?.navbar?.titles?.start || '' }}</label>
           </li>
-          <li  
-            :class="[{ active: $route.path === '/board' }, 'nav-item']" 
-            @click="goToPage('/board')"
-            >
+          <li :class="[{ active: $route.path === '/board' }, 'nav-item']" @click="goToPage('/board')">
             <ManagementBoard class="menu-icon"></ManagementBoard>
             <label>{{ lang.value?.navbar?.titles?.team || '' }}</label>
           </li>
@@ -56,10 +24,8 @@ import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
             <label>{{ lang.value?.navbar?.titles?.sponsors || '' }}</label>
           </li>
 
-          <li
-            :class="[{ active: $route.path === '/events' || $route.path === '/event' }, 'nav-item']"
-            @click="goToPage('/events')"
-          >
+          <li :class="[{ active: $route.path === '/events' || $route.path === '/event' }, 'nav-item']"
+            @click="goToPage('/events')">
             <EventsIcon class="menu-icon"></EventsIcon>
             <label>{{ lang.value?.navbar?.titles?.events || '' }}</label>
           </li>
@@ -68,13 +34,9 @@ import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
           </li>
         </ul>
 
-        <ButtonDarkMode class="bs-padding" :themeLabel="lang" />
+        <ButtonDarkMode class="bs-padding" :theme-label="lang.value?.navbar"  :display-label="true"/>
         <div class="dropdown">
-          <button
-            class="btn btn-outline-secondary dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             {{ lang.value?.navbar?.languages?.language || '' }}
           </button>
           <ul class="dropdown-menu dropdown-menu-dark">
@@ -95,83 +57,75 @@ import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
   </nav>
 </template>
 
-<script>
+<script setup>
+import ButtonDarkMode from '../ButtonDarkMode.vue'
+import LightMenuIcon from '../icons/LightMenuIcon.vue'
+import IconHome from '../icons/MenuIcons/HomeIcon.vue'
+import ManagementBoard from '../icons/MenuIcons/GroupIcon.vue'
+import PartnerIcon from '../icons/MenuIcons/PartnerIcon.vue'
+import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
 import { Collapse } from 'bootstrap'
 import { useRouter } from 'vue-router'
 import { getLangForPage, getConfig, setLang, LANGS } from '@/config/BasicConfig'
 import { isUserLoggedAdmin } from '@/utils/Validations'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const PAGE = 'navbar'
+const router = useRouter();
+const lang = ref({})
 
-export default {
-  data() {
-    return {
-      router: useRouter(),
-      lang: ref({}),
-      LANGS,
-      isUserLoggedAdmin,
-      navbarCollapse: null,
-    }
-  },
-  async mounted() {
-    window.addEventListener('scroll', this.handleScroll)
-    await getLangForPage(getConfig().CURRENT_LANG, PAGE)
-      .then((data) => {
-        this.lang.value = data
-      })
-      .catch(() => {
-        this.router.go(0)
-      })
-    this.toggleClass()
-    rippleEffect();
 
-    const CollapseElement = this.$refs.navbarCollapse;
-    this.navbarCollapse = new Collapse(CollapseElement,{ toggle: false });
-
-  },
-
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
-  methods: {
-    navigateLoginOrLogout() {
-      //window.location.href = '/login';
-      this.router.push('/login')
-      this.navbarClass = 'navbar-solid' // <-- NO SE SI SEA LA MEJOR FORMA DE HACERLO ****REVISAR****
-    },
-    goToEvents() {
-      this.router.push('/events');
-      this.closeNavbar();
-      this.navbarClass = 'navbar-solid' // <-- NO SE SI SEA LA MEJOR FORMA DE HACERLO ****REVISAR****
-    },
-    gotoHome() {
-      this.router.push('/');
-      this.closeNavbar();
-    },
-    goToPage(url) {
-      this.router.push(url);
-      this.closeNavbar();
-    },
-    changeLanguage(lang) {
-      setLang(lang)
+onMounted(async () => {
+  window.addEventListener('scroll', this.handleScroll)
+  await getLangForPage(getConfig().CURRENT_LANG, PAGE)
+    .then((data) => {
+      this.lang.value = data
+    })
+    .catch(() => {
       this.router.go(0)
-    },
-    toggleClass() {
-      if (getConfig().CURRENT_LANG === 'es') {
-        document.getElementById('es').classList.add('active')
-        document.getElementById('en').classList.remove('active')
-      } else {
-        document.getElementById('en').classList.add('active')
-        document.getElementById('es').classList.remove('active')
-      }
-    },
+    })
+  this.toggleClass()
+  rippleEffect();
+  const CollapseElement = this.$refs.navbarCollapse;
+  this.navbarCollapse = new Collapse(CollapseElement, { toggle: false });
+});
 
-    closeNavbar(){
-      if(window.innerWidth < 992 && this.navbarCollapse) this.navbarCollapse.hide();
-    }
+function navigateLoginOrLogout() {
+  //window.location.href = '/login';
+  router.push('/login')
+  this.navbarClass = 'navbar-solid' // <-- NO SE SI SEA LA MEJOR FORMA DE HACERLO ****REVISAR****
+}
+function goToEvents() {
+  router.push('/events');
+  this.closeNavbar();
+  this.navbarClass = 'navbar-solid' // <-- NO SE SI SEA LA MEJOR FORMA DE HACERLO ****REVISAR****
+}
+function gotoHome() {
+  router.push('/');
+  this.closeNavbar();
+}
+function goToPage(url) {
+  router.push(url);
+  this.closeNavbar();
+}
+function changeLanguage(lang) {
+  setLang(lang)
+  router.go(0)
+}
+function toggleClass() {
+  if (getConfig().CURRENT_LANG === 'es') {
+    document.getElementById('es').classList.add('active')
+    document.getElementById('en').classList.remove('active')
+  } else {
+    document.getElementById('en').classList.add('active')
+    document.getElementById('es').classList.remove('active')
   }
 }
+
+function closeNavbar() {
+  if (window.innerWidth < 992 && this.navbarCollapse) this.navbarCollapse.hide();
+}
+
 
 /* ripple animation on click menu link */
 const rippleEffect = () => {
@@ -195,7 +149,6 @@ const rippleEffect = () => {
 </script>
 
 <style scoped lang="scss">
-
 img {
   height: auto;
   width: 50px;
@@ -205,6 +158,7 @@ img {
   border-radius: 50%;
   margin-right: 0.5rem;
 }
+
 :deep(.ripple-effect) {
   position: absolute;
   background: #fff;
@@ -215,18 +169,21 @@ img {
   border-radius: 50%;
   animation: wave 0.3s linear;
 }
+
 @keyframes wave {
   0% {
     width: 0px;
     height: 0px;
     opacity: 0.2;
   }
+
   100% {
     height: 300px;
     width: 300px;
     opacity: 0;
   }
 }
+
 .navbar {
   transition: background-color 0.8s ease;
 }
@@ -253,6 +210,7 @@ img {
 li label {
   cursor: pointer !important;
 }
+
 #title {
   color: var(--text-color-1);
   position: relative;
@@ -277,6 +235,7 @@ li label {
 li.active {
   color: var(--color-active-light) !important;
 }
+
 .dark-mode li.active {
   color: var(--color-active-dark) !important;
 }
@@ -284,6 +243,7 @@ li.active {
 li:not(.active) {
   color: var(--text-color-1-dark, #fff);
 }
+
 /* Estilos para modo oscuro (basado en el modo del SO) */
 @media (prefers-color-scheme: dark) {
   .navbar-solid {
@@ -295,6 +255,7 @@ li:not(.active) {
   .menu-icon {
     display: none;
   }
+
   .navbar li {
     position: relative;
     padding: 15px 15px;
@@ -304,6 +265,7 @@ li:not(.active) {
   .navbar li:hover {
     background-color: rgba(255, 255, 255, 0.102);
   }
+
   li::after {
     content: '';
     position: absolute;
@@ -334,13 +296,16 @@ li:not(.active) {
     align-items: center;
     padding: 10px;
   }
+
   .custom-dropdown {
     padding-left: 0;
   }
+
   .menu-icon {
     display: block;
     margin-right: 10px;
   }
+
   ul li {
     border-bottom: 1px solid #ffffff1a;
   }

@@ -92,7 +92,8 @@ import AdminIcon from '../icons/MenuIcons/AdminIcon.vue'
           <div class="divider-div"></div>
           <ButtonDarkMode
             class="bs-padding"
-            :themeLabel="lang"
+            :theme-label="lang.value?.navbar"
+            :display-label="true"
             @theme-change="handleThemeChange"
             data-bs-dismiss="offcanvas"
           />

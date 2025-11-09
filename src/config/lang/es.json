@@ -106,7 +106,8 @@
             "sponsors": "Colaboradores",
             "events": "Eventos",
             "admin": "Administrar",
-            "darkMode": "Modo oscuro"
+            "themeMode": "Modo oscuro",
+            "collaborators": "Colaboradores"
         },
         "languages": {
             "language": "Idioma",
@@ -197,7 +198,7 @@
     ,
     "eventhomepage": {
         "titles": {
-            "noEvents": "No hay eventos disponibles",
+            "noEvents": "Sin eventos aún",
             "addEvent": "Agregar evento"
         }
     },
@@ -235,7 +236,7 @@
         "actions": {
             "main": "Acciones",
             "list": "Ir a la lista de eventos",
-            "listAdmin": "Ir a la lista de eventos admin",
+            "listAdmin": "Volver",
             "delete": "Eliminar evento",
             "edit": "Editar evento"
         },
@@ -259,7 +260,7 @@
         "titles": {
             "boards": "Miembros de la junta",
             "addmember": "Agregar miembro",
-            "nomembers": "No hay miembros disponibles"
+            "nomembers": "Sin información aun"
         }
     },
     "memberpage": {
@@ -308,11 +309,12 @@
     "sidebar": {
         "titles": {
             "main": "APAZA",
-            "language": "Idioma"
+            "language": "Idioma",
+            "themeMode": "Modo oscuro"
         },
         "menu": {
             "home": "Pagina Principal",
-            "dashboard": "Dashboard",
+            "dashboard": "Inicio",
             "gallery": "Galería",
             "events": "Eventos",
             "others": "Otros"
@@ -363,6 +365,29 @@
     "dashboard": {
         "titles": {
             "welcome": "Bienvenido al panel de administración!"
+        }
+    },
+    "collaboratorPage":
+    {
+        "subtitle": "Conoce a las personas, instituciones u organizaciones que colaboran con APAZA, contribuyendo con su tiempo y colaboración."
+    },
+    "adminCollaboratorPage": {
+        "title": "Colaboradores",
+        "addCollaborator": "Agregar Colaborador",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "noCollaborators": "No hay colaboradores",
+        "deleteModal": {
+            "title": "¿Eliminar colaborador?",
+            "body": "¿Está seguro de que desea eliminar este colaborador? Esta acción no se puede deshacer.",
+            "closeText": "Cancelar",
+            "acceptText": "Eliminar"
+        },
+        "updateModal": {
+            "title": "¿Actualizar colaborador?",
+            "body": "¿Está seguro de que desea guardar los cambios realizados?",
+            "closeText": "Cancelar",
+            "acceptText": "Actualizar"
         }
     }
 }

@@ -104,7 +104,8 @@
             "sponsors": "Partners",
             "events": "Events",
             "admin": "Manage",
-            "darkMode": "Dark Mode"
+            "darkMode": "Dark Mode",
+            "collaborators": "Collaborators"
         },
         "languages": {
             "language": "Language",
@@ -173,8 +174,8 @@
         "delete": "Delete"
         }
     },
-    "gallerydetailpage":
-    { "bottoms": {
+    "gallerydetailpage":{ 
+        "bottoms": {
         "delete": "Delete",
         "download": "Download",
         "save": "Save changes",
@@ -305,11 +306,12 @@
     "sidebar": {
         "titles": {
             "main": "APAZA",
-            "language": "Language"
+            "language": "Language",
+            "themeMode":"Dark Mode"
         },
         "menu": {
             "home": "Home Page",
-            "dashboard": "Dashboard",
+            "dashboard": "Home",
             "gallery": "Gallery",
             "events": "Events",
             "others": "Others"
@@ -360,6 +362,28 @@
     "dashboard": {
         "titles": {
             "welcome": "Welcome to the Administration Panel!"
+        }
+    },
+    "collaboratorPage": {
+        "subtitle":"Meet the people, institutions, and organizations that collaborate with APAZA, contributing their time and expertise."
+    },
+    "adminCollaboratorPage": {
+        "title": "Collaborators",
+        "addCollaborator": "Add Collaborator",
+        "edit": "Edit",
+        "delete": "Delete",
+        "noCollaborators": "No collaborators",
+        "deleteModal": {
+            "title": "Delete collaborator?",
+            "body": "Are you sure you want to delete this collaborator? This action cannot be undone.",
+            "closeText": "Cancel",
+            "acceptText": "Delete"
+        },
+        "updateModal": {
+            "title": "Update collaborator?",
+            "body": "Are you sure you want to save the changes made?",
+            "closeText": "Cancel",
+            "acceptText": "Update"
         }
     }
 }

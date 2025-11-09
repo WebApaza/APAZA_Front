@@ -150,25 +150,24 @@ const handleKeydown = (event) => {
     width: 100%;
     height: 60vh;
     min-height: 300px;
-    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 
+/*     box-shadow: 
         0 20px 40px rgba(0, 0, 0, 0.1),
         0 8px 16px rgba(0, 0, 0, 0.08);
     background: linear-gradient(45deg, var(--primary-color), var(--background-color));
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
-.carousel-container:hover {
+/* .carousel-container:hover {
     transform: translateY(-2px);
     box-shadow: 
         0 25px 50px rgba(0, 0, 0, 0.15),
         0 12px 24px rgba(0, 0, 0, 0.12);
-}
+} */
 
 .carousel-container:focus {
-    outline: 3px solid linear-gradient(45deg, var(--primary-color), var(--background-color));;
-    outline-offset: 2px;
+/*     outline: 3px solid linear-gradient(45deg, var(--primary-color), var(--background-color));;
+ */    outline-offset: 2px;
 }
 
 .carousel-track {
@@ -201,7 +200,6 @@ const handleKeydown = (event) => {
     object-fit: contain;
     object-position: center;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    background: rgba(0, 0, 0, 0.05);
 }
 
 .carousel-container:hover .carousel-image {
@@ -214,12 +212,6 @@ const handleKeydown = (event) => {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.1) 50%,
-        rgba(0, 0, 0, 0.3) 100%
-    );
     pointer-events: none;
 }
 
@@ -243,7 +235,7 @@ const handleKeydown = (event) => {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+   /*  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
 }
 
 .carousel-container:hover .carousel-control {
@@ -485,7 +477,6 @@ const handleKeydown = (event) => {
 
 /* Efectos de carga */
 .carousel-image {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
     background-size: 200% 100%;
 }
 

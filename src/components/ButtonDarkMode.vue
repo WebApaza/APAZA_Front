@@ -1,12 +1,49 @@
 <script setup>
-import MoonIcon from './icons/theme/MoonIcon.vue'
-import SunIcon from './icons/theme/SunIcon.vue'
+import { onMounted, ref } from 'vue';
+
+const isDarkMode = ref(false);
+
+const emit = defineEmits(['theme-change']);
+
+const props = defineProps({
+  themeLabel: {
+    type: Object,
+    required: false
+  },
+  displayLabel: {
+    type: Boolean,
+    required: true
+  },
+  w100: {
+    type: Boolean,
+    required: false
+  }
+})
+
+onMounted(() => {
+  const savedTheme = localStorage.getItem('darkMode')
+    if (savedTheme === 'enabled') {
+      isDarkMode.value = true
+      document.body.classList.add('dark-mode')
+    }
+    emit('theme-change', isDarkMode)
+})
+const toggleTheme = () => {
+      if (isDarkMode.value) {
+        document.body.classList.add('dark-mode')
+        localStorage.setItem('darkMode', 'enabled')
+      } else {
+        document.body.classList.remove('dark-mode')
+        localStorage.setItem('darkMode', 'disabled')
+      }
+      emit('theme-change', isDarkMode)
+    }
+
 </script>
 <template>
-  <div class="d-flex justify-content-between align-items-center mg-left">
-    <div class="theme-label">
-      <MoonIcon class="menu-icon"/>
-      <label for="bs-switch">{{ themeLabel.value?.navbar?.titles?.darkMode || '' }}</label>
+  <div :class="['d-flex justify-content-between align-items-center mg-left', {'w-100': w100}]">
+    <div > 
+      <label :class="{'theme-label': props.displayLabel}" for="bs-switch" style="color: var(--text-color-1);">{{ themeLabel?.titles?.themeMode }}</label>    
     </div>
     <div class="form-check form-switch">
       <input
@@ -18,47 +55,8 @@ import SunIcon from './icons/theme/SunIcon.vue'
         @change="toggleTheme"
       />
     </div>
-    <label class="toggle" :class="{'theme-icon-effect': isDarkMode}">
-      <div class="icon icon--moon">
-        <MoonIcon/>
-      </div>
-      <div class="icon icon--sun">
-        <SunIcon/>
-      </div>
-    </label>
   </div>
 </template>
-
-<script>
-export default {
-  props: ['themeLabel'],
-  data() {
-    return {
-      isDarkMode: false
-    }
-  },
-  mounted() {
-    const savedTheme = localStorage.getItem('darkMode')
-    if (savedTheme === 'enabled') {
-      this.isDarkMode = true
-      document.body.classList.add('dark-mode')
-    }
-    this.$emit('theme-change', this.isDarkMode)
-  },
-  methods: {
-    toggleTheme() {
-      if (this.isDarkMode) {
-        document.body.classList.add('dark-mode')
-        localStorage.setItem('darkMode', 'enabled')
-      } else {
-        document.body.classList.remove('dark-mode')
-        localStorage.setItem('darkMode', 'disabled')
-      }
-      this.$emit('theme-change', this.isDarkMode)
-    }
-  }
-}
-</script>
 
 <style scoped>
 .form-check-input:checked {
@@ -69,12 +67,12 @@ export default {
   box-shadow: none;
 }
 .theme-label {
-  display: none;
+  display: none !important;
 }
 
 @media (max-width: 990px) {
   .theme-label {
-    display: block;
+    display: block !important;
     color: var(--text-color-1);
     padding: 10px 0;
   }

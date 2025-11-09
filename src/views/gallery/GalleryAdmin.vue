@@ -20,6 +20,7 @@ const PAGE = 'galleryadminpage'
 const albums = ref([])
 const modal = ref(null)
 const infModal = ref({});
+const showMobileMenu = ref(false);
 
 // Galería y Notificaciones
 const gallery = ref({ description: '', year: '', images: [] })
@@ -39,6 +40,10 @@ const configPagination = {
 
 const updateNum = (value) => {
   num.value = value
+}
+
+const toggleMobileMenu = () => {
+  showMobileMenu.value = !showMobileMenu.value
 }
 
 
@@ -176,7 +181,7 @@ const viewAlbum = (albumId) => {
 }
 
 const changePage = (page) => {
-  getGallerys(page,num.value);
+  getGallerys(page, num.value);
 }
 
 const modalDeleteInfo = ref({
@@ -263,28 +268,56 @@ const saveChanges = async () => {
       <p class="ms-3 fs-4">{{ lang?.loading }}</p>
     </div>
     <div class="card p-2 p-md-4 mb-2 mb-md-4 shadow">
-          <div class="text-center mt-3 shadow p-3 mb-5 bg-body rounded">
-      <h1>{{ lang?.galleryadminpage?.titles?.gallery }}</h1>
-    </div>
+      <div class="text-center mt-3 shadow p-3 mb-3 bg-body rounded">
+        <h1>{{ lang?.galleryadminpage?.titles?.gallery }}</h1>
+      </div>
 
-    <div class="row gx-2">
-      <div class="col-12 col-md-4 mb-3">
-        <CardAdmin :description="lang?.galleryadminpage?.descriptions?.createAlbumImages"
-          :title="lang?.galleryadminpage?.titles?.addAlbum" @click="updateNum(1)" :icon="CreateAlbum" />
+      <!-- Botón para abrir menú móvil -->
+      <button v-if="!showMobileMenu" class="d-md-none open-movil-menu btn btn-primary shadow mb-3" @click="toggleMobileMenu">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+          <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+        </svg>
+        Opciones
+      </button>
+
+      <!-- Menú móvil con transición -->
+      <Transition name="slide-fade">
+        <div v-if="showMobileMenu" class="d-md-none d-flex flex-column justify-content-center gap-2 position-relative mobile-menu">
+          <button class="btn btn-primary shadow" @click="updateNum(1)">
+            {{ lang?.galleryadminpage?.titles?.addAlbum }}
+          </button>
+          <button class="btn btn-primary shadow" @click="getGallerys(1, 2)">
+            {{ lang?.galleryadminpage?.titles?.editAlbum }}
+          </button>
+          <button class="btn btn-primary shadow mb-3" @click="getGallerys(1, 3)">
+            {{ lang?.galleryadminpage?.titles?.addImage }}
+          </button>
+          <button class="close-movil-menu" @click="toggleMobileMenu">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+              <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+            </svg>
+          </button>
+        </div>
+      </Transition>
+
+      <div class="row gx-2 d-none d-md-flex">
+        <div class="col-12 col-md-4 mb-3">
+          <CardAdmin :description="lang?.galleryadminpage?.descriptions?.createAlbumImages"
+            :title="lang?.galleryadminpage?.titles?.addAlbum" @click="updateNum(1)" :icon="CreateAlbum" />
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+          <CardAdmin :description="lang?.galleryadminpage?.descriptions?.editDeleteAlbum"
+            :title="lang?.galleryadminpage?.titles?.editAlbum" :icon="UpdateAlbum" @click="getGallerys(1, 2)" />
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+          <CardAdmin :description="lang?.galleryadminpage?.descriptions?.addImageAlbum"
+            :title="lang?.galleryadminpage?.titles?.addImage" :icon="AddPhoto" @click="getGallerys(1, 3)" />
+        </div>
       </div>
-      <div class="col-12 col-md-4 mb-3">
-        <CardAdmin :description="lang?.galleryadminpage?.descriptions?.editDeleteAlbum"
-          :title="lang?.galleryadminpage?.titles?.editAlbum" :icon="UpdateAlbum" @click="getGallerys(1, 2)" />
-      </div>
-      <div class="col-12 col-md-4 mb-3">
-        <CardAdmin :description="lang?.galleryadminpage?.descriptions?.addImageAlbum"
-          :title="lang?.galleryadminpage?.titles?.addImage" :icon="AddPhoto" @click="getGallerys(1, 3)" />
-      </div>
-    </div>
     </div>
 
     <div class="row">
-      <div class="text-center mt-5 shadow p-3 mb-5 bg-body rounded" v-if="num!= 0">
+      <div class="text-center mt-5 shadow p-3 mb-5 bg-body rounded" v-if="num != 0">
         <!-- Agregar Imágenes -->
         <div v-if="num == 1" class="col-12">
           <h1>{{ lang?.galleryadminpage?.titles?.addAlbum }}</h1>
@@ -403,7 +436,7 @@ const saveChanges = async () => {
                   fill="#e3e3e3">
                   <path
                     d="M593.23-480 291.92-781.31q-11.92-11.92-11.61-28.38.31-16.46 12.23-28.39Q304.46-850 320.92-850t28.39 11.92l306.23 306.85q10.84 10.85 16.07 24.31 5.24 13.46 5.24 26.92t-5.24 26.92q-5.23 13.46-16.07 24.31L348.69-121.92q-11.92 11.92-28.07 11.61-16.16-.31-28.08-12.23-11.92-11.92-11.92-28.38t11.92-28.39L593.23-480Z" />
-                </svg> 
+                </svg>
               </button>
             </div>
           </div>
@@ -503,6 +536,91 @@ const saveChanges = async () => {
 </template>
 
 <style scoped>
+/* Botón para abrir el menú móvil */
+.open-movil-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: var(--primary-color) !important;
+  border: none !important;
+  padding: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.open-movil-menu:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Contenedor del menú móvil */
+.mobile-menu {
+  padding: 20px;
+  background: var(--background-color-4);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón para cerrar el menú móvil */
+.close-movil-menu {
+  position: absolute;
+  left: 50%;
+  bottom: 0%;
+  transform: translateX(-50%);
+  border: none;
+  padding: 12px;
+  border-radius: 50%;
+  color: var(--white-color);
+  background: var(--primary-color);
+  margin-bottom: -30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-movil-menu:hover {
+  transform: translateX(-50%) scale(1.1) rotate(180deg);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+}
+
+.close-movil-menu:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+.close-movil-menu svg {
+  margin-bottom: -5px;
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+/* Transiciones para el menú móvil */
+.slide-fade-enter-active {
+  transition: all 0.4s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.slide-fade-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.3s ease-in-out;

@@ -190,7 +190,7 @@ onMounted(async() => {
 
 /* Banner Hero Section */
 .banner {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  background: var(--background-color-5);
   position: relative;
   overflow: hidden;
   border-radius: 0 0 30px 30px;

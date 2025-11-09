@@ -18,6 +18,7 @@ import MemberPage from '@/views/board/MemberPage.vue'
 import GalleryDetail from '@/views/gallery/GalleryDetail.vue'
 import DevelopersView from '@/views/Developers/DevelopersView.vue'
 import PartnersView from '@/views/Partners/PartnersView.vue'
+import AdminPartnerHome from '@/views/Partners/AdminPartnerHome.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -74,6 +75,11 @@ const router = createRouter({
           path: 'gallery-detail',
           name: 'gallery-detail',
           component: GalleryDetail
+        },
+        {
+          path: 'collaborators',
+          name: 'collaborators',
+          component: AdminPartnerHome
         }
       ]
     },

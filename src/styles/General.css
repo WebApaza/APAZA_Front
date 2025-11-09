@@ -43,6 +43,7 @@ p,
 
   --divider-color: #a2ada2;
   --border-color: #75767a;
+  --border-color-1: #b9c0cd;
 
   --danger-color: #df7171;
 }
@@ -87,6 +88,7 @@ body.dark-mode {
 
   --divider-color: #92929244;
   --border-color: #5f626d;
+  --border-color-1: #51555c;
   --danger-color: #db3434;
 
 }
