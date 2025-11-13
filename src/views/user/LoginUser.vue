@@ -11,6 +11,21 @@ import { getLangForPage, getConfig } from '@/config/BasicConfig'
 import ShowPswdIcon from '@/components/icons/others/ShowPswdIcon.vue'
 import HidePswdIcon from '@/components/icons/others/HidePswdIcon.vue'
 import BackIcon from '@/components/icons/others/BackIcon.vue'
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Iniciar Sesión - APAZA',
+  meta: [
+    {
+      name: 'description',
+      content: 'Accede al panel de administración de APAZA. Gestiona eventos, miembros y contenido de la asociación.'
+    },
+    {
+      name: 'robots',
+      content: 'noindex, nofollow'
+    }
+  ]
+})
 
 const PAGE = 'loginpage'
 const router = useRouter()

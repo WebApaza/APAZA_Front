@@ -2,6 +2,21 @@
 import { getConfig, getLangForPage } from '@/config/BasicConfig';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useHead } from '@vueuse/head';
+
+useHead({
+  title: 'Desarrolladores - APAZA',
+  meta: [
+    {
+      name: 'description',
+      content: 'Conoce al equipo de desarrollo que creó el sitio web de APAZA. Desarrolladores comprometidos con la accesibilidad y la tecnología.'
+    },
+    {
+      name: 'keywords',
+      content: 'desarrolladores APAZA, equipo desarrollo, créditos, tecnología'
+    }
+  ]
+});
 
 const PAGE = 'developers';
 const lang = ref({});

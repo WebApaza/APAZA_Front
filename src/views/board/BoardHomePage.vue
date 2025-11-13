@@ -49,6 +49,21 @@ import { getMembers } from '@/services/BoardService';
 import { useRouter } from 'vue-router';
 import { isUserLoggedAdmin, isInAdminPage } from '@/utils/Validations';
 import { getLangForPage, getConfig } from '@/config/BasicConfig';
+import { useHead } from '@vueuse/head';
+
+useHead({
+  title: 'Junta Directiva - APAZA',
+  meta: [
+    {
+      name: 'description',
+      content: 'Conoce a los miembros de la Junta Directiva de APAZA, dedicados a apoyar a personas con autismo y sus familias.'
+    },
+    {
+      name: 'keywords',
+      content: 'junta directiva APAZA, equipo, miembros, directiva, autismo'
+    }
+  ]
+});
 
 
 const router = useRouter();

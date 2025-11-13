@@ -17,6 +17,7 @@
     "@kalimahapps/vue-icons": "^1.7.1",
     "@lottiefiles/dotlottie-vue": "^0.10.3",
     "@popperjs/core": "^2.11.8",
+    "@vueuse/head": "^2.0.0",
     "aos": "^2.3.4",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",

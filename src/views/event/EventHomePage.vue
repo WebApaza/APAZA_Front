@@ -56,6 +56,21 @@ import CardPresentInfoOverImage from '@/components/cards/CardPresentInfoOverImag
 import BaseCarousel from '@/components/carousel/BaseCarousel.vue';
 import BaseEventImage from '@/assets/imgwebp/APAZA_FONDO.webp'
 import LottieAnimation from '@/components/LottieAnimation.vue';
+import { useHead } from '@vueuse/head';
+
+useHead({
+  title: 'Eventos - APAZA',
+  meta: [
+    {
+      name: 'description',
+      content: 'Descubre todos los eventos, actividades y talleres organizados por APAZA para apoyar a personas con autismo y sus familias.'
+    },
+    {
+      name: 'keywords',
+      content: 'eventos APAZA, actividades autismo, talleres TEA, eventos Zona Atlántica'
+    }
+  ]
+});
 
 const router = useRouter();
 const events = ref([]);

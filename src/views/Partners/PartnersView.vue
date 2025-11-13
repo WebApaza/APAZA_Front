@@ -82,7 +82,22 @@ import { useRouter } from 'vue-router';
 import { getCollaborators } from '@/services/CollaboratorService';
 import { isUserLoggedAdmin, isInAdminPage } from '@/utils/Validations';
 import { getLangForPage, getConfig } from '@/config/BasicConfig';
-import BaseImage from '@/assets/imgwebp/APAZA_FONDO.webp'
+import BaseImage from '@/assets/imgwebp/APAZA_FONDO.webp';
+import { useHead } from '@vueuse/head';
+
+useHead({
+  title: 'Colaboradores - APAZA',
+  meta: [
+    {
+      name: 'description',
+      content: 'Conoce a nuestros colaboradores y voluntarios que apoyan la misión de APAZA de ayudar a personas con autismo y sus familias.'
+    },
+    {
+      name: 'keywords',
+      content: 'colaboradores APAZA, voluntarios, apoyo, comunidad, TEA'
+    }
+  ]
+});
 
 const router = useRouter();
 const collaborators = ref([]);

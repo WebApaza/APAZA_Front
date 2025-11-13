@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import { ref, onMounted } from 'vue';
 import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoader'
 import { getLangForPage, getConfig } from '@/config/BasicConfig';
+import { useHead } from '@vueuse/head';
 
 
 const PAGE = 'aboutUs';
@@ -11,6 +12,22 @@ const router = useRouter();
 
 //Así se implementa el cambio de idioma, IMPORTANTE el operador condicional(o v-if) en el template para que no se caiga la página
 const lang = ref({});
+
+//SEO
+useHead({
+  title: 'Sobre Nosotros - APAZA',
+  meta: [
+    {
+      name: 'description',
+      content: 'Conoce la historia, misión y visión de APAZA. Asociación dedicada a apoyar a personas con autismo y sus familias en la Zona Atlántica.'
+    },
+    {
+      name: 'keywords',
+      content: 'sobre APAZA, misión, visión, historia, asociación autismo, TEA'
+    }
+  ]
+})
+
 
 onMounted(async () => {
   initPreloader();

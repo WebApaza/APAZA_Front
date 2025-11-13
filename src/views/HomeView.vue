@@ -10,8 +10,23 @@ import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoad
 import BaseLoader from '@/components/loaders/BaseLoader.vue'
 import { useRouter } from 'vue-router';
 import { getEvents } from '@/services/EventService';
+import { useHead } from '@vueuse/head';
 
 import BaseEventImage from '@/assets/imgwebp/APAZA_FONDO.webp'
+
+useHead({
+  title: 'APAZA - Asociación de Personas con Autismo de la Zona Atlántica',
+  meta: [
+    {
+      name: 'description',
+      content: 'Asociación de Personas con Autismo de la Zona Atlántica. Conoce más sobre el TEA, nuestros eventos y cómo apoyamos a personas con autismo.'
+    },
+    {
+      name: 'keywords',
+      content: 'APAZA, autismo, TEA, trastorno espectro autista, asociación, Zona Atlántica'
+    }
+  ]
+});
 
 const PAGE = 'homepage';
 const router = useRouter();

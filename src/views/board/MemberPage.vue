@@ -73,6 +73,19 @@ import { deleteMember, updateMember } from '@/services/BoardService';
 import { isUserLoggedAdmin } from '@/utils/Validations';
 import { getLangForPage, getConfig } from '@/config/BasicConfig';
 import LoadingModal from '@/components/modals/LoadingModal.vue';
+import { useHead } from '@vueuse/head';
+
+const headData = ref({
+  title: 'Miembro - APAZA',
+  meta: [
+    {
+      name: 'description',
+      content: 'Información del miembro de la Junta Directiva de APAZA'
+    }
+  ]
+});
+
+useHead(headData);
 
 const router = useRouter();
 const isAdmin = ref(false);
@@ -171,6 +184,17 @@ onMounted(async() => {
 
     updatedMember.value.name = member.value.name;
     updatedMember.value.role = member.value.role;
+
+    // Actualizar head con información del miembro
+    headData.value = {
+        title: `${member.value.name} - ${member.value.role} - APAZA`,
+        meta: [
+            {
+                name: 'description',
+                content: `${member.value.name}, ${member.value.role} de la Junta Directiva de APAZA`
+            }
+        ]
+    };
 
     await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
         lang.value = data;

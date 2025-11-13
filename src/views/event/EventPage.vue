@@ -104,6 +104,19 @@ import { Modal } from 'bootstrap';
 import { deleteEvent, updateEvent } from '@/services/EventService';
 import { isUserLoggedAdmin } from '@/utils/Validations';
 import { getConfig, getLangForPage } from '@/config/BasicConfig';
+import { useHead } from '@vueuse/head';
+
+const headData = ref({
+  title: 'Evento - APAZA',
+  meta: [
+    {
+      name: 'description',
+      content: 'Información detallada sobre el evento de APAZA'
+    }
+  ]
+});
+
+useHead(headData);
 
 const router = useRouter();
 
@@ -216,6 +229,17 @@ onMounted(async () => {
   updateEvents.value.title = event.value.title;
   updateEvents.value.description = event.value.description;
   updateEvents.value.type = event.value.type;
+
+  // Actualizar head con información del evento
+  headData.value = {
+    title: `${event.value.title} - APAZA`,
+    meta: [
+      {
+        name: 'description',
+        content: event.value.description || 'Información detallada sobre el evento de APAZA'
+      }
+    ]
+  };
 
   await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
     lang.value = data;
